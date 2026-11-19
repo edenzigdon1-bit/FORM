@@ -81,6 +81,7 @@ h2{font-size:15px;font-weight:700;color:var(--muted);margin:0 0 30px;letter-spac
 .og.has .c:not(.sel){opacity:.2}
 .og .t{background:var(--soft);font-size:13px;font-weight:700;color:var(--ink);display:flex;align-items:center;justify-content:center}
 .og .t.on{background:var(--ink);color:var(--paper)}
+.og .tri{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);height:var(--cell)}.og .tri>.t{border:0;cursor:pointer}
 .og .w2{grid-column:span 2;width:auto}.og .w5{grid-column:1/-1;width:auto}
 .blk{grid-column:2/span 3;width:auto!important;height:calc(var(--cell) * 3)!important}
 .tbig{grid-column:1/-1;height:calc(var(--cell) * 2);background:var(--soft);display:flex;align-items:center;justify-content:center;cursor:pointer}
@@ -161,7 +162,7 @@ footer .wrap{display:flex;justify-content:space-between}
   <div class="card"><h3>שורת יום</h3><div class="demo"><div class="app"><div class="dayrow" id="mDay"></div></div></div></div>
   <div class="card"><h3>צורה</h3><div class="demo"><div class="app"><div class="og" id="mPick"></div></div></div></div>
   <div class="card"><h3>צבע</h3><div class="demo"><div class="app stack" style="gap:10px"><div class="og"><div class="c blk" id="mPrev"></div></div><div class="og" id="mPal"></div></div></div></div>
-  <div class="card"><h3>זמן</h3><div class="demo"><div class="app"><div class="og" id="mTime"><button class="c t w2 on" data-d="0">היום</button><button class="c t w2" data-d="1">מחר</button><button class="c t" data-d="2">תאריך</button><div class="tbig" id="mClock"></div><button class="c t w5" id="mAll">כל היום</button></div></div></div></div>
+  <div class="card"><h3>זמן</h3><div class="demo"><div class="app"><div class="og" id="mTime"><div class="tri"><button class="t on" data-d="0">היום</button><button class="t" data-d="1">מחר</button><button class="t" data-d="2">תאריך</button></div><div class="tbig" id="mClock"></div><button class="c t w5" id="mAll">כל היום</button></div></div></div></div>
   <div class="card"><h3>חזרה</h3><div class="demo"><div class="app"><div class="og" id="mRep"><button class="c t w5" data-r="d">כל יום</button><button class="c t w5" data-r="w">כל שבוע</button><button class="c t w5" data-r="m">כל חודש</button><button class="c t w5 on" data-r="n">רק הפעם</button></div></div></div></div>
  </div>
 </div></section>

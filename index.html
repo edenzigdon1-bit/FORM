@@ -135,6 +135,7 @@ header{position:absolute;top:0;left:0;right:0;height:calc(var(--hdr) + var(--st)
 .og.picks{gap:0;padding:0;margin:0;overflow:visible}
 .og .opt{width:auto;height:var(--cell);border-radius:0;border:0;font-size:16px}
 .step.mid .og{margin:auto 0}
+.og .tri{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);height:var(--cell)}.og .tri>.t{height:100%;width:100%;border:0;border-radius:0;padding:0;font-size:16px}
 .gin{height:auto !important;padding:0 4px 6px !important;line-height:1.25}
 .gnote{font-size:13px;color:var(--muted);text-align:center;padding:10px 0;grid-column:1/-1}
 #splash{position:fixed;inset:0;z-index:50;background:var(--paper);overflow:hidden}
@@ -296,7 +297,7 @@ function drawStep(){let h=ovTop();const col=draft.color||(draft.shape?SH[draft.s
  if(step===1)h+=`<div class="step"><div class="scroll"><div class="og picks ${draft.shape?'has':''}">${SHAPES.map(s=>`<button class="c pick ${draft.shape===s.id?'sel':''}" data-s="${s.id}" aria-label="${s.name}">${svg(s.id,INK)}</button>`).join('')}</div></div><button class="gcta" id="nx" ${draft.shape?'':'disabled'}>${nxt}</button></div>`;
  if(step===2)h+=`<div class="step"><div class="og"><div class="c blk" id="prev">${svg(draft.shape,col)}</div></div><div class="og pal ${draft._cp?'has':''}" style="margin-top:calc(var(--cell) * .5)">${PAL.map(([hx,n])=>`<button class="c gcol ${draft._cp&&draft.color&&draft.color.toUpperCase()===hx?'sel':''}" style="background:${hx}" data-c="${hx}" aria-label="${n}"></button>`).join('')}</div><button class="gcta" id="nx" style="margin-top:auto">${nxt}</button></div>`;
  if(step===3){const t=todayISO(),tm=addDays(t,1);const which=draft.date===t?'t':draft.date===tm?'m':'o';
-  h+=`<div class="step"><div class="og"><button class="c t w2 ${which==='t'?'on':''}" data-d="t">היום</button><button class="c t w2 ${which==='m'?'on':''}" data-d="m">מחר</button><label class="c t ${which==='o'?'on':''}" style="position:relative;font-size:${which==='o'?13:16}px;text-align:center;line-height:1.2">${which==='o'?shortDay(draft.date).replace('יום ',''):'תאריך'}<input type="date" class="din2" id="din" value="${draft.date}"></label>
+  h+=`<div class="step"><div class="og"><div class="tri"><button class="t ${which==='t'?'on':''}" data-d="t">היום</button><button class="t ${which==='m'?'on':''}" data-d="m">מחר</button><label class="t ${which==='o'?'on':''}" style="position:relative;font-size:${which==='o'?14:16}px;text-align:center;line-height:1.2">${which==='o'?shortDay(draft.date).replace('יום ',''):'תאריך'}<input type="date" class="din2" id="din" value="${draft.date}"></label></div>
   <label class="c tbig ${draft.notime?'off':''}"><span class="tnum">${numSVG(draft.time)}</span><input type="time" id="tim" value="${draft.time}" ${draft.notime?'disabled':''} aria-label="שעה"></label>
   <button class="c t w5 ${draft.notime?'on':''}" id="nt">כל היום</button></div><button class="gcta" id="nx" style="margin-top:auto">${mode==='edit'?'שמירה':'המשך'}</button></div>`;}
  if(step===4)h+=`<div class="step"><div class="og">${repOpts().map(([k,l])=>`<button class="c t w5 opt ${draft.repeat===k?'on':''}" data-r="${k}">${l}</button>`).join('')}</div><button class="gcta ${mode==='add'?'or':''}" id="nx" style="margin-top:auto">${mode==='add'?'הוספה':'שמירה'}</button></div>`;
