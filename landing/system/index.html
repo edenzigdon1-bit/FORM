@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FORM · ספר המערכת</title>
+<meta name="description" content="ספר המערכת של FORM: המקורות בעבודות של ברברה סטאופכר סולומון, הטוקנים, האטומים והמולקולות של השפה.">
+<link rel="icon" href="../img/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F2F1EE;--ink:#1C1A18;--muted:#6B655E;--line:#D6D2C9;--orange:#FA4416;--soft:#E6E3DD;
+ --font:"Helvetica Hebrew",Arimo,"Helvetica Neue",Helvetica,Arial,sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:120px}
+body{margin:0;min-width:1100px;background:var(--paper);color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased}
+a{color:inherit}button,input{font-family:var(--font)}svg{display:block}
+.wrap{max-width:1240px;margin:0 auto;padding:0 56px}
+/* top */
+header{position:sticky;top:0;z-index:20;background:rgba(242,241,238,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none}
+.brand .logo{width:104px;direction:ltr}.brand span{font-size:15px;color:var(--muted)}
+.back{font-size:15px;text-decoration:none;color:var(--muted)}.back:hover{color:var(--ink)}
+.tabs{display:flex;gap:26px;height:48px;align-items:center;font-size:15px}
+.tabs a{text-decoration:none;color:var(--muted);display:flex;gap:6px;align-items:center;height:100%;border-bottom:2px solid transparent}
+.tabs a i{font-style:normal;color:var(--orange);font-weight:700}
+.tabs a.on{color:var(--ink);border-color:var(--ink)}
+/* intro */
+.intro{padding:84px 0 40px}
+.kick{color:var(--orange);font-weight:700;font-size:18px;margin:0 0 18px}
+h1{font-size:84px;line-height:1;margin:0 0 26px;letter-spacing:-.02em}
+.lead{font-size:22px;line-height:1.55;color:var(--muted);max-width:760px;margin:0}
+section{padding:70px 0;border-top:1px solid var(--line)}
+.sh{display:flex;align-items:baseline;gap:16px;margin-bottom:12px}
+.sh i{font-style:normal;color:var(--orange);font-weight:700;font-size:22px}
+h2{font-size:48px;margin:0;letter-spacing:-.01em}
+.sub{font-size:19px;line-height:1.6;color:var(--muted);max-width:720px;margin:0 0 40px}
+h3{font-size:22px;margin:0 0 8px}
+p{line-height:1.6}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px}
+.rules{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.rules li{display:grid;grid-template-columns:34px 1fr;gap:12px;font-size:17px;line-height:1.55}
+.rules li b{display:block}
+.rules li i{width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--paper);display:flex;align-items:center;justify-content:center;font-style:normal;font-size:14px;font-weight:700}
+/* origins */
+.bio{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:56px;margin-bottom:56px}
+.bio p{font-size:18px;margin:0 0 14px}
+.time{list-style:none;margin:0;padding:0;border-right:2px solid var(--ink)}
+.time li{display:grid;grid-template-columns:104px 1fr;gap:10px;padding:10px 18px;font-size:16px;line-height:1.45}
+.time b{font-size:16px}
+.works{display:grid;grid-template-columns:1fr 1.45fr 1fr;gap:28px;align-items:start}
+.works figure{margin:0}
+.works img{width:100%;display:block;background:#fff;box-shadow:0 20px 40px -24px rgba(28,26,24,.4)}
+.works figcaption{margin-top:14px;font-size:15px;line-height:1.5;color:var(--muted)}
+.works figcaption b{display:block;color:var(--ink);font-size:17px;margin-bottom:4px}
+.works figcaption em{display:block;font-style:normal;color:var(--orange);margin-top:6px;font-weight:700}
+.from{margin-top:56px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.from div{background:#fff8;border:1.5px solid var(--line);border-radius:18px;padding:22px}
+.from b{display:block;font-size:18px;margin-bottom:6px}.from span{font-size:15px;color:var(--muted);line-height:1.5}
+/* concept */
+.flow{display:grid;grid-template-columns:repeat(5,auto);align-items:center;justify-content:space-between;gap:14px;margin-top:10px}
+.flow .st{text-align:center}
+.flow .ph{width:180px;border-radius:30px;background:var(--ink);padding:8px}
+.flow .ph div{aspect-ratio:390/844;border-radius:23px;overflow:hidden}.flow .ph img{width:100%;height:100%;display:block}
+.flow .st b{display:block;margin-top:12px;font-size:18px}.flow .st span{font-size:14px;color:var(--muted)}
+.flow .poster img{width:200px;display:block;box-shadow:0 20px 40px -20px rgba(28,26,24,.45)}
+.arrow{font-size:28px;color:var(--orange);font-weight:700}
+/* tokens */
+.sw{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+.sw div{font-size:14px;line-height:1.45}
+.sw i{display:block;aspect-ratio:1;margin-bottom:10px;box-shadow:inset 0 0 0 1px rgba(28,26,24,.08)}
+.sw b{display:block;font-size:15px}.sw code{font:13px/1.4 ui-monospace,Menlo,monospace;color:var(--muted);direction:ltr;display:block;text-align:right}
+.ttab{width:100%;border-collapse:collapse}
+.ttab td{padding:16px 0;border-bottom:1px solid var(--line);vertical-align:middle}
+.ttab td:first-child{width:260px;font:13px/1.5 ui-monospace,Menlo,monospace;color:var(--muted);direction:ltr;text-align:right}
+.digits{display:flex;gap:22px;align-items:flex-end;flex-wrap:wrap;direction:ltr;justify-content:flex-end}
+.digits svg{height:70px;width:auto}
+.gridDemo{display:grid;grid-template-columns:repeat(5,92px);gap:0;direction:rtl;background:var(--paper);outline:1px dashed var(--line);width:max-content}
+.gridDemo div{width:92px;height:92px;outline:1px dashed rgba(250,68,22,.35);outline-offset:-1px}
+.gridDemo svg{width:100%;height:100%}
+.spec{font:14px/1.7 ui-monospace,Menlo,monospace;color:var(--muted);direction:ltr;text-align:right}
+/* atoms */
+.shapes{display:grid;grid-template-columns:repeat(10,1fr);gap:0;direction:rtl}
+.shapes button{border:0;background:none;padding:0;aspect-ratio:1;position:relative;cursor:pointer}
+.shapes button svg{width:100%;height:100%}
+.shapes button span{position:absolute;inset:auto 0 -2px;font:11px/1 ui-monospace,Menlo,monospace;color:var(--muted);opacity:0;transition:opacity .2s;direction:ltr}
+.shapes button:hover span{opacity:1}
+.atoms{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:48px}
+.card{background:#fff;border-radius:22px;padding:24px;display:grid;gap:14px;align-content:start}
+.card .lab{font-size:13px;color:var(--muted)}
+.card h3{font-size:19px;margin:0}
+.demo{background:var(--paper);border-radius:14px;padding:18px;display:grid;gap:10px;justify-items:stretch}
+/* app atoms (copied from the app) */
+.app{--cell:64px;width:calc(var(--cell) * 5);margin:0 auto}
+.gcta{width:100%;height:var(--cell);border:0;background:var(--ink);color:var(--paper);font-size:17px;font-weight:700;cursor:pointer;transition:opacity .2s}
+.gcta.or{background:var(--orange)}.gcta:disabled{opacity:.25;cursor:default}
+.gin{width:100%;border:0;border-bottom:2px solid var(--ink);background:transparent;font-size:24px;font-weight:700;text-align:right;padding:0 4px 6px;color:var(--ink);outline:none;caret-color:var(--orange)}
+.gin::placeholder{color:#B8B3AA}
+.og{display:grid;grid-template-columns:repeat(5,var(--cell));gap:0;direction:rtl}
+.og .c{width:var(--cell);height:var(--cell);border:0;padding:0;background:none;cursor:pointer;transition:opacity .25s}
+.og .c svg{width:100%;height:100%}
+.og.has .c:not(.sel){opacity:.2}
+.og .t{background:var(--soft);font-size:15px;font-weight:700;color:var(--ink);display:flex;align-items:center;justify-content:center}
+.og .t.on{background:var(--ink);color:var(--paper)}
+.og .w2{grid-column:span 2;width:auto}.og .w5{grid-column:1/-1;width:auto}
+.blk{grid-column:2/span 3;width:auto!important;height:calc(var(--cell) * 3)!important;padding:0}
+.tbig{grid-column:1/-1;height:calc(var(--cell) * 2);background:var(--soft);display:flex;align-items:center;justify-content:center}
+.tbig svg{height:42px;width:auto}
+.hdr{display:flex;justify-content:space-between;align-items:flex-start;padding:4px 2px}
+.hdr .n svg{height:46px;width:auto}
+.hdr small{display:block;color:var(--orange);font-size:13px;margin-top:6px}
+.plus{width:26px;height:26px;position:relative;flex:none}.plus i{position:absolute;background:var(--orange);border-radius:2px}
+.plus i:first-child{left:0;right:0;top:10px;height:6px}.plus i:last-child{top:0;bottom:0;left:10px;width:6px}
+.dayrow h6{margin:0 0 6px;font-size:12px;font-weight:400;color:var(--muted)}
+.dayrow .og{--cell:52px;justify-content:start}
+.state{display:flex;gap:8px;flex-wrap:wrap}
+.state button{border:1.5px solid var(--ink);background:none;border-radius:16px;height:30px;padding:0 12px;font-size:13px;cursor:pointer}
+.state button.on{background:var(--ink);color:var(--paper)}
+footer{padding:44px 0 60px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+ <div class="top"><a class="brand" href="../"><span class="logo" id="logo"></span><span>ספר המערכת</span></a><a class="back" href="../">← חזרה לדף הנחיתה</a></div>
+ <nav class="tabs" id="tabs"><a href="#origins"><i>1</i>מקורות</a><a href="#concept"><i>2</i>קונספט</a><a href="#color"><i>3</i>צבע</a><a href="#type"><i>4</i>טיפוגרפיה</a><a href="#grid"><i>5</i>גריד</a><a href="#atoms"><i>6</i>אטומים</a><a href="#molecules"><i>7</i>מולקולות</a></nav>
+</div></header>
+
+<div class="intro"><div class="wrap">
+ <p class="kick">יומן בהשראת ברברה סטאופכר סולומון</p>
+ <h1>מאחורי FORM</h1>
+ <p class="lead">זו מערכת העיצוב של FORM: מאיפה היא באה, החוקים שלה והחלקים שממנה היא בנויה. כל הדוגמאות בעמוד הזה בנויות מאותו קוד ומאותן צורות כמו האפליקציה עצמה.</p>
+</div></div>
+
+<section id="origins"><div class="wrap">
+ <div class="sh"><i>1</i><h2>מקורות</h2></div>
+ <p class="sub">ברברה סטאופכר סולומון (1928–2024), מעצבת גרפית, אמנית ואדריכלית נוף מסן פרנסיסקו.</p>
+ <div class="bio">
+  <div><p>היא למדה עיצוב גרפי בבזל אצל ארמין הופמן, ומשם הביאה את המשמעת השווייצרית: הלווטיקה, רשת, הרבה לבן ובלי קישוטים.</p>
+   <p>באמריקה היא נתנה לשפה הזו קנה מידה ענק. בשנות השישים צבעה צורות ואותיות ענקיות על הקירות של The Sea Ranch, והפכה לחלוצה של הסופרגרפיקה.</p>
+   <p>FORM לוקח מהעבודות שלה את הצורות, את הצבעים ואת הגריד, ומקטין אותם למסך של טלפון.</p></div>
+  <ol class="time"><li><b>1928</b>נולדה בסן פרנסיסקו</li><li><b>1956–1959</b>לימודי עיצוב גרפי בבזל אצל ארמין הופמן</li><li><b>1964–1968</b>הלוגו והסופרגרפיקה של The Sea Ranch</li><li><b>1970</b>מדליית AIA לאמנויות תעשייתיות</li><li><b>2020</b>התערוכה Green Rectangles of Paradise בבזל</li><li><b>2024</b>נפטרה בסן פרנסיסקו</li></ol>
+ </div>
+ <div class="works">
+  <figure><img src="img/jazz.jpg" alt="JAZZ, אותיות של ברברה סטאופכר סולומון"><figcaption><b>JAZZ</b>אותיות שבנויות מחלקים גאומטריים: קשת, משולש ומלבנים.<em>ב־FORM: האות הופכת לצורה עצמאית</em></figcaption></figure>
+  <figure><img src="img/grop.jpg" alt="Green Rectangles of Paradise, סקיצות"><figcaption><b>Green Rectangles of Paradise</b>סקיצות לתערוכה בגלריה VonBartha, בזל, 2020. האותיות צמודות לקיר ולתקרה.<em>ב־FORM: צורות שנוגעות בקצוות המשבצת</em></figcaption></figure>
+  <figure><img src="img/wall.jpg" alt="קיר עבודות של ברברה סטאופכר סולומון"><figcaption><b>קיר של עבודות</b>אותיות, ספרות וצורות בגריד צפוף, כל אחת בצבע אחד שטוח.<em>ב־FORM: הפוסטר של החודש</em></figcaption></figure>
+ </div>
+ <div class="from">
+  <div><b>צורות</b><span>40 הצורות של FORM נלקחו מהעבודות שלה: הלב, הציפור, העין, הפרח, הכוכבים, החצים.</span></div>
+  <div><b>צבע</b><span>צבעים שטוחים ומלאים, בלי גרדיאנט ובלי צל. צבע אחד לכל צורה.</span></div>
+  <div><b>גריד</b><span>משבצות צמודות בלי רווחים, כמו הקיר שלה. הצורה ממלאת את המשבצת.</span></div>
+  <div><b>טיפוגרפיה</b><span>הלווטיקה כבסיס. אותיות וספרות בסגנון שלה רק ללוגו ולמספרים.</span></div>
+ </div>
+</div></section>
+
+<section id="concept"><div class="wrap">
+ <div class="sh"><i>2</i><h2>קונספט</h2></div>
+ <p class="sub">כל משימה היא צורה. היומן הוא גלריה עם ארבע רמות זום, ובסוף החודש כל הצורות נהיות פוסטר.</p>
+ <div class="flow">
+  <div class="st"><div class="ph"><div><img src="img/screen0.jpg" alt="משימה"></div></div><b>משימה</b><span>צורה אחת על כל המסך</span></div>
+  <div class="st"><div class="ph"><div><img src="img/screen1.jpg" alt="יום"></div></div><b>יום</b><span>המשימות של כל יום</span></div>
+  <div class="st"><div class="ph"><div><img src="img/screen2.jpg" alt="שבוע"></div></div><b>שבוע</b><span>שבוע במבט אחד</span></div>
+  <div class="st"><div class="ph"><div><img src="img/screen3.jpg" alt="חודש"></div></div><b>חודש</b><span>חודש אחרי חודש</span></div>
+  <div class="st poster"><img src="img/poster_p2.jpg" alt="פוסטר נובמבר"><b>פוסטר</b><span>FORM Club, עד הבית</span></div>
+ </div>
+ <div class="cols" style="margin-top:56px">
+  <ol class="rules">
+   <li><i>1</i><div><b>משימה אחת, צורה אחת</b>כל משימה מקבלת צורה אחת וצבע אחד.</div></li>
+   <li><i>2</i><div><b>הצורות באות רק מברברה</b>אין אייקונים ואין צורות כלליות. כל צורה נגזרה מעבודה שלה.</div></li>
+   <li><i>3</i><div><b>צביטה מחליפה רמה</b>מקרבים ומרחיקים בין משימה, יום, שבוע וחודש, כמו בגלריה של הטלפון.</div></li>
+  </ol>
+  <ol class="rules" start="4">
+   <li><i>4</i><div><b>בלי טבלאות ובלי רשימות</b>היומן מספר מה עשית רק דרך צורות.</div></li>
+   <li><i>5</i><div><b>הכול על גריד אחד</b>5 עמודות צמודות, באפליקציה, בהוספת משימה ובפוסטר.</div></li>
+   <li><i>6</i><div><b>החודש הוא יצירה</b>בסוף החודש היומן נהיה פוסטר A3 שאפשר לתלות.</div></li>
+  </ol>
+ </div>
+</div></section>
+
+<section id="color"><div class="wrap">
+ <div class="sh"><i>3</i><h2>צבע</h2></div>
+ <p class="sub">תשעה צבעים מהפלטה של ברברה ועוד שני צבעי בסיס. הכתום הוא הצבע של הפעולה: הפלוס, התאריך והכפתור "הוספה".</p>
+ <div class="sw" id="sw"></div>
+</div></section>
+
+<section id="type"><div class="wrap">
+ <div class="sh"><i>4</i><h2>טיפוגרפיה</h2></div>
+ <p class="sub">הלווטיקה עברית לכל הטקסט, כמו הבסיס השווייצרי של ברברה. האותיות והספרות בסגנון שלה שמורות ללוגו ולמספרים הגדולים.</p>
+ <table class="ttab">
+  <tr><td>type.display · digits · 66px</td><td><div class="digits" id="digits"></div></td></tr>
+  <tr><td>type.logo · FORM</td><td><span id="biglogo" style="display:block;width:300px;direction:ltr"></span></td></tr>
+  <tr><td>type.input · 24–28px · 700</td><td style="font-size:28px;font-weight:700">ריצה בבוקר</td></tr>
+  <tr><td>type.title · 20px · 700</td><td style="font-size:20px;font-weight:700">לימודים עם עדן</td></tr>
+  <tr><td>type.button · 16–18px · 700</td><td style="font-size:18px;font-weight:700">בחרתי</td></tr>
+  <tr><td>type.date · 14px · orange</td><td style="font-size:14px;color:var(--orange)">יום חמישי, נובמבר</td></tr>
+  <tr><td>type.label · 13px · muted</td><td style="font-size:13px;color:var(--muted)">היום · יום חמישי 19.11</td></tr>
+ </table>
+</div></section>
+
+<section id="grid"><div class="wrap">
+ <div class="sh"><i>5</i><h2>גריד</h2></div>
+ <p class="sub">גריד אחד של 5 עמודות לכל האפליקציה. אין רווח בין משבצות, והצורה נוגעת בקצוות של המשבצת שלה.</p>
+ <div class="cols" style="align-items:center">
+  <div class="gridDemo" id="gridDemo"></div>
+  <div><div class="spec">grid.columns = 5<br>grid.gap = 0<br>grid.cell = (min(100vw, 520px) − 36px) / 5<br>grid.margin = 18px<br>shape.fit = contain · touches 2 edges</div>
+   <ol class="rules" style="margin-top:28px"><li><i>1</i><div><b>משבצת היא היחידה</b>כפתור, צבע, שעה ותצוגה מקדימה הם משבצת אחת או כמה משבצות.</div></li><li><i>2</i><div><b>אין רווחים</b>הצורות צמודות זו לזו, כמו בקיר של ברברה ובפוסטר.</div></li></ol></div>
+ </div>
+</div></section>
+
+<section id="atoms"><div class="wrap">
+ <div class="sh"><i>6</i><h2>אטומים</h2></div>
+ <p class="sub">40 הצורות הן האטומים של FORM. לחצי על צורה כדי לראות אותה בצבעים אחרים.</p>
+ <div class="shapes" id="shapes"></div>
+ <div class="atoms">
+  <div class="card"><span class="lab">atom · button</span><h3>כפתור שורה</h3><div class="demo"><div class="app" style="--cell:56px;display:grid;gap:8px"><button class="gcta">המשך</button><button class="gcta" disabled>בחרתי</button><button class="gcta or">הוספה</button></div></div><span class="lab">שחור לכל שלב, כתום רק לפעולה האחרונה. כפתור לא פעיל שקוף ב־75%.</span></div>
+  <div class="card"><span class="lab">atom · input</span><h3>שדה משימה</h3><div class="demo"><div class="app" style="--cell:56px"><input class="gin" placeholder="מה המשימה?" id="dIn"></div></div><span class="lab">קו תחתון שחור וסמן כתום. נסי לכתוב.</span></div>
+  <div class="card"><span class="lab">atom · header</span><h3>כותרת תאריך</h3><div class="demo"><div class="hdr"><div><span class="n" id="hN"></span><small>יום חמישי, נובמבר</small></div><span class="plus"><i></i><i></i></span></div></div><span class="lab">ספרות ברברה, שורה כתומה ופלוס כתום להוספה.</span></div>
+ </div>
+</div></section>
+
+<section id="molecules"><div class="wrap">
+ <div class="sh"><i>7</i><h2>מולקולות</h2></div>
+ <p class="sub">כך האטומים מתחברים לרכיבים של האפליקציה. כל הרכיבים כאן חיים, אפשר ללחוץ עליהם.</p>
+ <div class="atoms" style="margin-top:0">
+  <div class="card"><span class="lab">molecule · shape picker</span><h3>בחירת צורה</h3><div class="demo"><div class="app" style="--cell:58px"><div class="og" id="mPick"></div></div></div><span class="lab">הצורות שחורות. אחרי בחירה, כל השאר דוהות.</span></div>
+  <div class="card"><span class="lab">molecule · color picker</span><h3>בחירת צבע</h3><div class="demo"><div class="app" style="--cell:58px;display:grid;gap:14px"><div class="og"><div class="c blk" id="mPrev"></div></div><div class="og" id="mPal"></div></div></div><span class="lab">הצבעים מלאים עד שבוחרים. התצוגה המקדימה תופסת 3×3 משבצות.</span></div>
+  <div class="card"><span class="lab">molecule · time</span><h3>בחירת זמן</h3><div class="demo"><div class="app" style="--cell:58px"><div class="og" id="mTime"><button class="c t w2 on" data-d="0">היום</button><button class="c t w2" data-d="1">מחר</button><button class="c t" data-d="2" style="font-size:13px">תאריך</button><div class="tbig" id="mClock"></div><button class="c t w5" id="mAll">כל היום</button></div></div></div><span class="lab">יום ושעה על אותו גריד. "כל היום" מכבה את השעה.</span></div>
+  <div class="card"><span class="lab">molecule · repeat</span><h3>חזרה</h3><div class="demo"><div class="app" style="--cell:50px"><div class="og" id="mRep"><button class="c t w5" data-r="d">כל יום</button><button class="c t w5" data-r="w">כל שבוע · בימי חמישי</button><button class="c t w5" data-r="m">כל חודש · ב־19 לחודש</button><button class="c t w5 on" data-r="n">לא, רק הפעם</button></div></div></div><span class="lab">שורות ברוחב מלא, הבחירה בשחור.</span></div>
+  <div class="card"><span class="lab">molecule · day row</span><h3>שורת יום</h3><div class="demo"><div class="dayrow" id="mDay"></div></div><span class="lab">כותרת קטנה ומתחתיה הצורות של היום, צמודות.</span></div>
+  <div class="card"><span class="lab">organism · add flow</span><h3>הוספת משימה</h3><div class="demo" style="gap:14px"><ol class="rules" style="gap:10px"><li><i>1</i><div>כותבים מה המשימה</div></li><li><i>2</i><div>בוחרים צורה</div></li><li><i>3</i><div>בוחרים צבע</div></li><li><i>4</i><div>בוחרים יום ושעה</div></li><li><i>5</i><div>בוחרים חזרה ← הוספה</div></li></ol></div><span class="lab">כל שלב על אותו גריד ואותו רקע נייר, בלי חלון קופץ ובלי טשטוש.</span></div>
+ </div>
+</div></section>
+<footer><div class="wrap"><span>FORM · ספר המערכת · עדן זיגדון</span><span><a href="../">דף הנחיתה</a> · <a href="https://edenzigdon1-bit.github.io/FORM/">האפליקציה</a></span></div></footer>
+<script>
+const SHAPES=[{"id": "diamond", "name": "יהלום", "main": "#FA4416", "vb": "0.00 0.00 39.00 39.00", "body": "<path d=\"M18.8036 0L0 19.1579L18.8036 39L39 19.1579L18.8036 0Z\" fill=\"{c}\"/>", "vb_orig": "0.00 0.00 39 39"}, {"id": "arrow", "name": "חץ", "main": "#FA4416", "vb": "0.00 -0.09 61.00 59.17", "body": "<path d=\"M61 45.0591L45.626 59L19.3415 33.6076V59H0V0H61V20.1646H35.4594L61 45.0591Z\" fill=\"{c}\"/>", "vb_orig": "0.00 -1.00 61 61"}, {"id": "hook", "name": "גרש", "main": "#1C1A18", "vb": "-0.08 0.00 25.16 50.49", "body": "<path d=\"M25 50.5V26H11C10.6 15.6 19.5 10.3333 24 9V0C7.6 0.8 0 17.5 0 26V50.5H25Z\" fill=\"{c}\"/>", "vb_orig": "-13.00 0.00 51 51"}, {"id": "vbars", "name": "שלושה עמודים", "main": "#3E27B3", "vb": "0.00 -0.09 70.20 65.99", "body": "<path d=\"M0 65.8V0H21.94V65.8Z\" fill=\"{c}\"/><path d=\"M24.14 65.8V0H46.08V65.8Z\" fill=\"{c}\"/><path d=\"M48.27 65.8V0H70.21V65.8Z\" fill=\"{c}\"/>", "vb_orig": "-0.00 -2.20 70.2 70.2"}, {"id": "hbars", "name": "שלושה פסים", "main": "#1C1A18", "vb": "-0.09 0.00 65.99 70.20", "body": "<path d=\"M0 0H65.82V21.94H0Z\" fill=\"{c}\"/><path d=\"M0 24.14H65.82V46.08H0Z\" fill=\"{c}\"/><path d=\"M0 48.27H65.82V70.21H0Z\" fill=\"{c}\"/>", "vb_orig": "-2.20 -0.00 70.2 70.2"}, {"id": "wedge", "name": "כנף", "main": "#F00202", "vb": "0.00 -0.03 57.81 39.05", "body": "<path d=\"M15.2998 39C-9.70044 25 -0.70046 5 18.2996 0L57.7999 39H15.2998Z\" fill=\"{c}\"/>", "vb_orig": "0.00 -9.50 58 58"}, {"id": "heart", "name": "לב", "main": "#D8319A", "vb": "0.00 -0.09 65.00 62.18", "body": "<path d=\"M64.5482 24.4246L33.3167 62L1.5586 26.3387C-1.37742 21.711 -1.37727 0.205366 12.4981 0.205359C33.4931 0.205349 32.605 18.3536 29.5801 26.3387H35.452C31.4484 20.3498 30.2557 -2.38934 52.0001 0.205359C65.6159 1.8301 65.7048 16.2579 64.5482 24.4246Z\" fill=\"{c}\"/>", "vb_orig": "0.00 -1.50 65 65"}, {"id": "fourdots", "name": "ארבע נקודות", "main": "#F00202", "vb": "0.00 -0.07 88.00 82.13", "body": "<ellipse cx=\"66\" cy=\"61.5\" rx=\"22\" ry=\"20.5\" fill=\"{c}\"/><ellipse cx=\"66\" cy=\"20.5\" rx=\"22\" ry=\"20.5\" fill=\"{c}\"/><ellipse cx=\"22\" cy=\"20.5\" rx=\"22\" ry=\"20.5\" fill=\"{c}\"/><ellipse cx=\"22\" cy=\"61.5\" rx=\"22\" ry=\"20.5\" fill=\"{c}\"/>", "vb_orig": "0.00 -3.00 88 88"}, {"id": "frame", "name": "ריבוע", "main": "#3E27B3", "vb": "0.00 -0.02 70.00 66.03", "body": "<rect x=\"0\" y=\"0\" width=\"70\" height=\"66\" fill=\"{c}\"/><rect x=\"21.6\" y=\"19.3\" width=\"28.1\" height=\"25.7\" fill=\"#F2F1EE\"/>", "vb_orig": "0.00 -2.00 70 70"}, {"id": "dot", "name": "נקודה", "main": "#D8319A", "vb": "0.00 -0.03 44.00 41.07", "body": "<ellipse cx=\"22\" cy=\"20.5\" rx=\"22\" ry=\"20.5\" fill=\"{c}\"/>", "vb_orig": "0.00 -1.50 44 44"}, {"id": "loops", "name": "לולאות", "main": "#1C1A18", "vb": "0.00 1.82 300.43 266.37", "body": "<path d=\"M0 2H167A133 133 0 0 1 167 268H0V230H167A95 95 0 0 0 167 40H0Z\" fill=\"{c}\" fill-rule=\"evenodd\"/><path d=\"M0 78H155A57 57 0 0 1 155 192H0V152H155A17 17 0 0 0 155 118H0Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "0.00 -17.50 305 305"}, {"id": "stripes", "name": "פסים אדומים", "main": "#F00202", "vb": "11.60 2.00 278.40 261.97", "body": "<path d=\"M12 2h22v262h-22ZM55 2h22v262h-22ZM98 2h22v262h-22ZM141 2h22v262h-22ZM184 2h22v262h-22ZM227 2h22v262h-22ZM270 2h22v262h-22Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "0.00 -12.50 290 290"}, {"id": "ublock", "name": "בלוק U", "main": "#FA4416", "vb": "1.99 1.91 292.04 268.20", "body": "<path d=\"M2 2H98V178H196V2H294V270H2Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "0.00 -12.00 298 298"}, {"id": "dotring", "name": "נקודה בטבעת", "main": "#FA4416", "vb": "26.58 0.82 246.50 246.50", "body": "<path d=\"M28 124a122 122 0 1 0 244 0a122 122 0 1 0 -244 0Z\" fill=\"none\" stroke=\"{c}\" stroke-width=\"2\"/><path d=\"M74 123a78 78 0 1 0 156 0a78 78 0 1 0 -156 0Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "0.00 -19.00 290 290"}, {"id": "bird", "name": "ציפור", "main": "#3E27B3", "vb": "4.90 3.19 285.18 265.09", "body": "<path d=\"M5 5L40 9Q52 15 60 30Q100 0 152 4Q212 8 242 21Q268 24 290 6L195 97L290 140L150 268L102 180L5 262Q30 215 18 175Q2 125 14 95Q22 72 37 58Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "0.00 -12.00 294 294"}, {"id": "fold", "name": "קיפול", "main": "#FA4416", "vb": "7.58 -0.35 293.91 268.66", "body": "<path d=\"M8 0L148 90L110 140L8 268Z\" fill=\"{c}\" fill-rule=\"evenodd\"/><path d=\"M110 140L162 176L301 5L301 268L8 268Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "0.00 -15.50 303 303"}, {"id": "chevron", "name": "חץ סגול", "main": "#5E0160", "vb": "9.82 -0.17 295.53 258.33", "body": "<path d=\"M140 0L285 0L158 122L305 258L160 258L10 122Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "0.00 -26.00 310 310"}, {"id": "arrowbox", "name": "חץ קופסה", "main": "#FA4416", "vb": "4.95 4.86 193.05 175.23", "body": "<path d=\"M102 5L104 90H198L102 180H5V95Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "0.00 -9.00 198 198"}, {"id": "arch", "name": "קשת", "main": "#1C1A18", "vb": "0.00 -0.23 292.00 275.45", "body": "<path d=\"M0 275V150A150 150 0 0 1 150 0H292V275H200V225H100V275ZM112 135A86 47 0 0 1 198 88V135Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "0.00 -8.50 292 292"}, {"id": "jhook", "name": "וו", "main": "#FA4416", "vb": "4.70 -0.31 275.42 255.68", "body": "<path d=\"M168 0H280V175Q280 255 195 255H65L5 158H125Q168 158 168 115Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "0.00 -13.00 282 282"}, {"id": "flower", "name": "פרח", "main": "#FA4416", "vb": "1.02 -1.25 303.98 272.47", "body": "<path d=\"M133.0 141.0L77.4 31.3Q62.0 1.0 96.0 1.0L202.0 1.0Q236.0 1.0 263.8 20.6L286.0 36.2Q300.0 46.0 301.5 63.0L301.5 63.0Q303.0 80.0 286.9 85.8ZM133.0 141.0L271.0 91.5Q303.0 80.0 303.2 114.0L303.8 211.6Q304.0 236.0 287.0 253.5L287.0 253.5Q270.0 271.0 245.6 271.0L234.0 271.0Q200.0 271.0 184.4 240.8ZM133.0 141.0L186.3 244.3Q200.0 271.0 170.0 271.0L50.9 271.0Q30.0 271.0 16.0 255.5L16.0 255.5Q2.0 240.0 2.0 219.1L2.0 216.5Q2.0 193.0 23.8 184.3ZM133.0 141.0L29.9 181.9Q2.0 193.0 1.8 163.0L1.2 63.1Q1.0 40.0 15.5 22.0L19.9 16.5Q30.0 4.0 46.0 2.5L46.0 2.5Q62.0 1.0 69.3 15.3Z\" fill=\"{c}\" fill-rule=\"evenodd\"/><path d=\"M3 192L304 78\" stroke=\"#F2F1EE\" stroke-width=\"4\"/><path d=\"M62 0L200 270\" stroke=\"#F2F1EE\" stroke-width=\"4\"/><path d=\"M174.2 145.9L95.8 130.1\" stroke=\"#F2F1EE\" stroke-width=\"3\"/><path d=\"M147.6 176.0L122.4 100.0\" stroke=\"#F2F1EE\" stroke-width=\"3\"/><path d=\"M108.3 167.8L161.7 108.2\" stroke=\"#F2F1EE\" stroke-width=\"3\"/>", "vb_orig": "0.00 -16.50 305 305"}, {"id": "eye", "name": "עין", "main": "#5E0160", "vb": "2.96 -6.01 292.05 292.05", "body": "<path d=\"M3 140a146 146 0 1 0 292 0a146 146 0 1 0 -292 0Z\" fill=\"{c}\" fill-rule=\"evenodd\"/><path d=\"M4 140a108 108 0 1 0 216 0a108 108 0 1 0 -216 0Z\" fill=\"#F2F1EE\" fill-rule=\"evenodd\"/><path d=\"M59 140a75 75 0 1 0 150 0a75 75 0 1 0 -150 0Z\" fill=\"{c}\" fill-rule=\"evenodd\"/><path d=\"M122 140a44 44 0 1 0 88 0a44 44 0 1 0 -88 0Z\" fill=\"#F2F1EE\" fill-rule=\"evenodd\"/><path d=\"M138 142a22 22 0 1 0 44 0a22 22 0 1 0 -44 0Z\" fill=\"{c}\" fill-rule=\"evenodd\"/><path d=\"M142 138a9 9 0 1 0 18 0a9 9 0 1 0 -18 0Z\" fill=\"#F2F1EE\" fill-rule=\"evenodd\"/>", "vb_orig": "0.00 -7.00 296 296"}, {"id": "stars", "name": "כוכבים", "main": "#3E27B3", "vb": "0.00 4.67 290.00 280.33", "body": "<path d=\"M0 5H290V280H205V100H0Z\" fill=\"{c}\" fill-rule=\"evenodd\"/><path d=\"M55.0 7.0L65.8 40.2L100.7 40.2L72.4 60.7L83.2 93.8L55.0 73.3L26.8 93.8L37.6 60.7L9.3 40.2L44.2 40.2ZM152.0 7.0L162.8 40.2L197.7 40.2L169.4 60.7L180.2 93.8L152.0 73.3L123.8 93.8L134.6 60.7L106.3 40.2L141.2 40.2ZM250.0 7.0L260.8 40.2L295.7 40.2L267.4 60.7L278.2 93.8L250.0 73.3L221.8 93.8L232.6 60.7L204.3 40.2L239.2 40.2ZM250.0 117.0L260.8 150.2L295.7 150.2L267.4 170.7L278.2 203.8L250.0 183.3L221.8 203.8L232.6 170.7L204.3 150.2L239.2 150.2ZM250.0 207.0L260.8 240.2L295.7 240.2L267.4 260.7L278.2 293.8L250.0 273.3L221.8 293.8L232.6 260.7L204.3 240.2L239.2 240.2Z\" fill=\"#F2F1EE\" fill-rule=\"evenodd\"/>", "vb_orig": "0.00 -5.00 290 290"}, {"id": "zig", "name": "זיגזג", "main": "#FA4416", "vb": "0.00 -0.17 290.00 280.33", "body": "<path d=\"M0 0H290V280H0Z\" fill=\"{c}\" fill-rule=\"evenodd\"/><clipPath id=\"zc\"><rect width=\"290\" height=\"280\"/></clipPath><g clip-path=\"url(#zc)\"><path d=\"M335 -10L207 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M315 -10L187 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M295 -10L167 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M275 -10L147 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M255 -10L127 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M235 -10L107 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M-10 6L210 0L87 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M-10 25L182 20L67 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M-10 45L154 40L47 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M-10 64L126 60L28 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M-10 83L98 80L8 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M-10 102L70 100L-12 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M-10 121L42 120L-32 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M-10 140L14 140L-52 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M-10 160L-14 160L-71 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M-10 179L-42 180L-91 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M-10 198L-70 200L-111 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M-10 217L-98 220L-131 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M-10 236L-126 240L-151 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M-10 255L-154 260L-170 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/></g>", "vb_orig": "0.00 -5.00 290 290"}, {"id": "cring", "name": "סי כפול", "main": "#0270B6", "vb": "0.00 0.00 96.83 100.00", "body": "<path d=\"M91 30A46 46 0 1 0 91 70\" fill=\"none\" stroke=\"{c}\" stroke-width=\"13\"/><path d=\"M73 36A25 25 0 1 0 73 64\" fill=\"none\" stroke=\"{c}\" stroke-width=\"13\"/>", "vb_orig": "0.00 0.00 100 100"}, {"id": "band", "name": "פס שבור", "main": "#F00202", "vb": "-0.25 0.00 178.28 182.08", "body": "<path d=\"M0 42L178 0V140L0 182V146L118 118V48L0 78Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "-5.00 0.00 190 190"}, {"id": "bite", "name": "נגיסות", "main": "#1C1A18", "vb": "11.85 9.89 186.19 246.39", "body": "<path d=\"M12 10H100V134A54 54 0 0 0 100 242V256H12Z\" fill=\"{c}\" fill-rule=\"evenodd\"/><path d=\"M110 10H198V136A54 54 0 0 0 198 244V256H110Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "-29.00 0.00 258 258"}, {"id": "prism", "name": "מנסרה", "main": "#1C1A18", "vb": "9.75 60.02 80.50 162.15", "body": "<path d=\"M10 60L90 95V185L10 222Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "-65 -4 230 230"}, {"id": "tri", "name": "משולש", "main": "#1C1A18", "vb": "-0.08 0.00 88.17 92.00", "body": "<path d=\"M0 0L88 46L0 92Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "-1.00 0.00 92 92"}, {"id": "ceiling", "name": "מקבילית", "main": "#0270B6", "vb": "0.00 -0.13 160.00 80.27", "body": "<path d=\"M0 80L40 0L160 0L120 80Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "0.00 -30.00 160 160"}, {"id": "vchev", "name": "שברונים", "main": "#1C1A18", "vb": "0.00 0.00 84.00 140.00", "body": "<path d=\"M0 0L42 36L84 0L84 20L42 56L0 20ZM0 42L42 78L84 42L84 62L42 98L0 62ZM0 84L42 120L84 84L84 104L42 140L0 104Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "-28.00 0.00 140 140"}, {"id": "knot", "name": "קשר", "main": "#1C1A18", "vb": "21.93 1.87 262.14 270.30", "body": "<path d=\"M42 120V66A44 44 0 0 1 130 66V120\" fill=\"none\" stroke=\"{c}\" stroke-width=\"40\"/><path d=\"M168 120V78A48 48 0 0 1 264 78V120\" fill=\"none\" stroke=\"{c}\" stroke-width=\"40\"/><path d=\"M42 120A111 100 0 0 0 264 120\" fill=\"none\" stroke=\"{c}\" stroke-width=\"40\"/><path d=\"M132 215H172V272H132Z\" fill=\"{c}\"/><path d=\"M85 140A65 68 0 1 0 215 140A65 68 0 1 0 85 140ZM124 133A26 30 0 0 1 176 133ZM128 160H172V202H128Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "0.00 -17.00 306 306"}, {"id": "star", "name": "כוכב", "main": "#3E27B3", "vb": "4.33 5.00 91.33 86.83", "body": "<path d=\"M50.0 5.0L60.8 38.2L95.7 38.2L67.4 58.7L78.2 91.8L50.0 71.3L21.8 91.8L32.6 58.7L4.3 38.2L39.2 38.2Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "0.00 0.00 100 100"}, {"id": "dome", "name": "כיפה מפוספסת", "main": "#FA4416", "vb": "2.00 2.00 194.33 98.00", "body": "<mask id=\"dm\"><path d=\"M2 100A98 98 0 0 1 198 100Z\" fill=\"#fff\"/></mask><g mask=\"url(#dm)\"><path d=\"M-40 100L40 0L58 0L-22 100Z\" fill=\"{c}\"/><path d=\"M-6 100L74 0L92 0L12 100Z\" fill=\"{c}\"/><path d=\"M28 100L108 0L126 0L46 100Z\" fill=\"{c}\"/><path d=\"M62 100L142 0L160 0L80 100Z\" fill=\"{c}\"/><path d=\"M96 100L176 0L194 0L114 100Z\" fill=\"{c}\"/><path d=\"M130 100L210 0L228 0L148 100Z\" fill=\"{c}\"/><path d=\"M164 100L244 0L262 0L182 100Z\" fill=\"{c}\"/><path d=\"M198 100L278 0L296 0L216 100Z\" fill=\"{c}\"/></g>", "vb_orig": "0.00 -50.00 200 200"}, {"id": "sail", "name": "מפרש", "main": "#1C1A18", "vb": "0.00 -0.70 590.00 266.48", "body": "<path d=\"M0 265L105 0H285L590 218V265H452L440 252H150L142 265ZM190 128H262L198 86Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "0 -160 590 590"}, {"id": "fblock", "name": "F", "main": "#F00202", "vb": "0.00 -0.33 290.00 270.67", "body": "<path d=\"M0 0H290V88H100V102H285L192 186H100V270H0Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "0 -10 290 290"}, {"id": "roundu", "name": "U מעוגל", "main": "#5E0160", "vb": "101.93 91.89 74.15 110.10", "body": "<path d=\"M102 92H126V165A13 13 0 0 0 152 165V92H176V165A37 37 0 0 1 102 165Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "72 70 134 134"}, {"id": "boot", "name": "מגף", "main": "#F00202", "vb": "18.00 0.00 144.00 116.00", "body": "<path d=\"M98 0H158V64Q158 96 162 116H141Q140 92 128 92Q115 92 113 116H18Q18 102 38 98L84 92Q98 86 98 64Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "10 -20 160 160"}, {"id": "qmark", "name": "סימן שאלה", "main": "#1C1A18", "vb": "-1.58 -2.00 57.02 106.15", "body": "<path d=\"M6 24A21 21 0 1 1 30 47Q19 51 19 61V72\" fill=\"none\" stroke=\"{c}\" stroke-width=\"15\"/><path d=\"M11 84H27V104H11Z\" fill=\"{c}\"/>", "vb_orig": "-30 -2 110 110"}, {"id": "pills", "name": "גלולות", "main": "#1C1A18", "vb": "190.00 10.00 42.00 270.20", "body": "<path d=\"M190 10H232V120A21 21 0 0 1 190 120ZM190 140A21 21 0 0 1 232 140V180A21 21 0 0 1 190 180ZM190 200A21 21 0 0 1 232 200V280H190Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "71.0 3.0 280.0 280.0"}];const GLY={"F": "M1.8 102.6L2.6 103.1L31.1 103.1L31.8 102.8L31.9 102.4L31.9 70.2L32.1 69.6L32.5 69.2L33.0 69.1L33.2 69.2L102.1 69.2L102.6 69.0L102.9 68.5L102.9 39.5L102.8 39.1L102.0 38.8L2.8 38.8L2.0 39.0L1.6 39.6L1.6 102.2ZM1.6 2.6L1.6 34.5L1.9 35.1L2.4 35.5L2.9 35.6L3.4 35.5L101.4 35.5L102.0 35.6L102.4 35.5L102.8 35.1L102.9 34.8L102.9 2.5L102.5 2.0L102.1 1.9L2.6 1.9L2.1 2.0Z", "O": "M46.6 2.0L46.5 2.1L43.9 2.4L42.2 2.9L40.5 3.0L37.9 3.9L36.4 4.1L34.8 4.9L33.1 5.2L32.1 5.9L31.1 6.1L29.5 7.0L28.6 7.2L28.0 7.8L26.9 8.2L26.1 8.9L25.4 9.1L24.5 9.9L23.9 10.1L21.0 12.1L17.6 15.0L14.0 18.6L12.2 20.6L11.8 21.5L11.0 22.2L8.1 26.5L7.6 27.9L6.1 30.2L5.8 31.6L4.9 33.0L4.6 34.2L4.0 35.4L3.8 36.8L3.0 38.5L2.8 40.1L2.0 42.5L1.8 45.2L1.2 47.8L1.2 49.2L1.1 49.4L1.1 50.5L1.0 50.6L1.0 53.2L1.1 53.4L1.2 57.1L1.8 59.2L1.8 60.6L1.9 60.8L2.0 62.4L2.4 63.8L2.6 64.1L3.0 66.4L3.6 67.8L4.1 69.8L4.8 71.0L4.9 71.6L5.6 73.0L6.1 74.6L6.8 75.5L7.0 76.2L7.8 77.2L8.1 78.1L8.6 78.8L9.0 79.6L12.9 84.9L19.5 91.5L20.2 91.9L20.9 92.5L25.4 95.6L26.6 96.1L27.1 96.6L28.0 97.0L28.6 97.5L30.0 98.0L31.4 98.8L32.5 99.0L33.5 99.6L35.1 100.0L36.4 100.6L38.2 101.0L40.4 101.8L41.9 101.9L46.4 102.8L48.2 102.8L48.4 102.9L56.8 102.8L60.5 102.0L62.8 101.8L65.0 101.0L66.6 100.8L67.2 100.4L70.1 99.5L76.1 96.6L76.8 96.1L78.1 95.5L80.1 94.0L81.1 93.5L83.8 91.5L84.1 91.0L86.6 88.9L88.5 87.0L88.9 86.4L91.2 83.9L92.9 81.4L93.8 80.4L94.0 79.8L96.5 75.9L96.6 75.4L97.6 73.6L98.0 72.2L98.6 71.1L98.9 70.0L99.6 68.4L99.9 67.0L100.6 65.1L101.0 62.6L101.8 59.6L101.8 57.8L101.9 57.6L102.0 54.6L102.1 54.5L102.1 50.1L102.0 50.0L102.0 48.4L101.9 48.2L101.9 47.0L101.8 46.9L101.8 45.1L101.6 45.0L101.6 44.1L101.4 43.5L101.4 43.0L100.9 41.6L100.6 39.5L99.9 37.8L99.5 36.0L98.9 34.8L98.5 33.2L97.9 32.2L97.6 31.2L96.9 30.1L96.6 29.2L96.0 28.4L95.5 27.2L91.6 21.4L89.9 19.5L88.9 18.1L85.9 15.1L84.5 14.1L82.5 12.2L80.2 10.9L79.8 10.4L78.6 9.8L77.9 9.1L76.9 8.8L74.2 7.1L73.4 6.9L72.1 6.1L71.1 5.9L70.1 5.2L68.9 5.0L67.2 4.2L65.4 3.9L63.9 3.2L60.2 2.8L58.8 2.2L56.8 2.1L56.6 2.0L54.1 2.0L54.0 1.9ZM50.0 33.4L53.0 33.4L53.1 33.5L56.9 34.0L58.5 34.8L59.8 35.1L60.4 35.6L61.6 36.1L63.5 37.5L65.8 39.6L67.9 42.4L68.0 42.9L68.8 44.0L69.0 44.9L69.5 45.6L70.6 50.1L70.6 54.8L70.0 56.9L69.8 58.5L69.0 59.9L68.9 60.5L68.4 61.5L66.8 64.0L63.2 67.5L62.1 68.1L61.4 68.8L60.1 69.2L59.2 69.9L57.5 70.4L56.4 70.9L54.1 71.1L53.2 71.4L50.2 71.4L48.5 71.0L46.9 70.9L45.1 70.1L44.1 69.9L43.1 69.2L41.9 68.8L39.4 67.0L37.0 64.6L35.2 62.0L34.6 60.5L33.9 59.2L33.6 58.1L33.1 57.0L32.8 55.1L32.6 51.4L32.8 51.2L32.8 49.4L33.0 48.1L33.5 47.1L33.9 45.2L34.5 44.4L35.0 43.0L36.8 40.5L39.9 37.4L43.4 35.2L46.4 34.0L48.6 33.8Z", "R": "M1.4 2.0L1.0 2.5L1.1 3.0L1.8 3.8L2.4 5.1L4.8 9.0L5.2 10.1L5.9 11.0L6.1 11.8L6.9 12.8L10.0 18.5L10.5 19.0L11.4 19.2L71.0 19.2L73.1 20.1L74.1 21.1L74.6 22.1L74.6 23.2L74.0 24.5L72.6 25.8L72.1 26.0L70.4 26.4L14.8 26.4L14.5 26.5L14.4 27.1L15.2 28.9L16.5 30.9L17.1 32.4L18.8 34.8L19.2 36.1L20.8 38.4L21.2 39.6L21.9 40.5L22.2 41.4L22.9 42.1L24.1 44.8L25.5 46.9L26.1 48.4L26.8 49.1L27.2 50.2L27.8 50.9L28.2 52.1L29.8 54.4L30.2 55.6L32.9 60.0L33.4 61.2L34.5 62.9L35.1 64.4L35.8 65.1L36.2 66.2L36.8 66.9L37.2 68.1L38.9 70.6L39.0 71.1L39.9 72.5L40.1 73.2L40.9 74.2L41.2 75.1L41.9 76.0L42.4 77.2L42.8 77.6L43.1 78.5L43.6 79.1L44.1 80.4L45.8 82.9L46.2 84.1L46.8 84.8L47.4 86.1L48.9 88.5L49.1 89.2L50.9 92.0L51.4 93.2L51.8 93.6L52.2 94.8L52.8 95.4L53.2 96.6L54.8 98.9L55.1 99.9L55.8 100.8L56.4 102.1L57.1 102.9L57.8 103.1L92.2 103.1L92.6 103.0L93.0 102.6L93.0 102.1L92.8 101.6L92.1 100.9L91.6 99.8L91.0 98.9L90.6 97.9L89.2 95.8L88.6 94.2L87.1 92.0L86.6 90.8L86.1 90.1L85.6 89.0L84.4 87.0L83.8 85.5L83.1 84.8L82.6 83.6L82.1 83.0L81.6 81.8L80.0 79.2L79.9 78.8L79.0 77.4L78.8 76.6L77.0 73.9L76.6 72.9L75.1 70.5L74.6 69.2L72.0 64.9L71.6 63.9L70.2 61.8L69.8 60.5L68.1 58.0L67.6 56.8L66.1 54.4L64.8 51.8L64.8 51.5L64.1 50.8L63.6 49.6L63.1 49.0L62.6 47.8L62.1 47.1L61.5 45.9L61.0 45.4L60.8 44.8L60.9 44.2L61.2 43.9L61.9 43.8L80.2 43.8L82.1 42.8L84.8 40.8L87.8 37.9L88.1 37.2L89.8 35.5L91.8 32.1L92.0 31.2L92.8 30.0L92.9 29.2L93.5 27.8L94.0 25.2L94.1 21.0L94.0 20.9L93.9 18.4L92.9 15.6L92.9 15.2L91.9 13.4L91.9 13.1L91.1 12.1L90.8 11.2L89.4 9.4L87.1 7.0L84.9 5.0L81.0 2.2L79.8 1.9L1.6 1.9Z"};const DIG={"1": [15, "<path d=\"M15 66V0H0V66H15Z\"/>"], "2": [42, "<path d=\"M42 24.1002C37.5789 -13.2997 2.21053 -2.29977 0 24.1002L15.4737 24.2C17.6842 17.6 26.5263 17.6 26.5263 24.2C26.5263 33 9.57895 43.9003 0 50.5003V66L42 65.9002V50.5003H22.1053C30.9474 46.2 42 35.2 42 24.1002Z\"/>"], "3": [40, "<path d=\"M32.1337 28.1842C34.6055 -4.22116 2.47183 0.0995556 0 0.291092V13.2532C9.8873 13.2532 19.7746 15.222 17.3028 26.0238L0 26.0741V39.1774C19.7746 38.9859 24.7183 41.1463 24.7183 45.467C24.7183 49.7877 19.7746 51.9481 0 51.9481V65.1017C53.6151 72.4054 40.7475 32.9116 32.1337 28.1842Z\"/>"], "4": [53, "<path d=\"M0.10215 50.4644C-1.5932 14.1482 18.2514 5.29611 27.2933 0H52.7237L52.7237 65.8231H35.7701L35.7046 50.4644H0.10215Z\"/><path d=\"M35.171 35.1057V19.7469C24.2005 19.7469 17.6182 30.8379 17.6182 35.1057H35.171Z\" fill=\"#F2F1EE\"/>"], "5": [53, "<path d=\"M36.164 22.5176H14.0672V14.1828H45.9436V0H0V37.0118H7.67909L28.4413 37.4C39.3803 37.4 41.5681 50.6 28.4413 51.5059H0V66H36.164C65.6338 52.8 50.3192 26.4 36.164 22.5176Z\"/>"], "6": [49, "<circle cx=\"24.1351\" cy=\"41.688\" r=\"24.1351\"/><circle cx=\"24.1352\" cy=\"41.688\" r=\"9.05068\" fill=\"#F2F1EE\"/><path d=\"M0 43.8821V0H15.3587V19.7469L0 43.8821Z\"/>"], "7": [48, "<path d=\"M48 0H0V16.5H32.7273V66H48V0Z\"/>"], "8": [40, "<circle cx=\"19.747\" cy=\"46.0762\" r=\"19.7469\"/><circle cx=\"19.747\" cy=\"19.7469\" r=\"19.7469\"/><circle cx=\"19.747\" cy=\"19.7469\" r=\"7.4051\" fill=\"#F2F1EE\"/><circle cx=\"19.747\" cy=\"46.0762\" r=\"7.4051\" fill=\"#F2F1EE\"/>"], "9": [49, "<circle cx=\"24.1351\" cy=\"24.1352\" r=\"24.1351\"/><circle cx=\"24.1351\" cy=\"24.1352\" r=\"9.05068\" fill=\"#F2F1EE\"/><path d=\"M48.2703 21.941V65.8231H32.9115V46.0762L48.2703 21.941Z\"/>"], "0": [53, "<ellipse cx=\"26.33\" cy=\"32.91\" rx=\"26.33\" ry=\"32.91\"/><ellipse cx=\"26.33\" cy=\"32.91\" rx=\"9.87\" ry=\"12.34\" fill=\"#F2F1EE\"/>"], "\u2013": [22, "<rect x=\"2\" y=\"29\" width=\"18\" height=\"10\"/>"], ":": [10, "<rect x=\"0\" y=\"16\" width=\"10\" height=\"10\"/><rect x=\"0\" y=\"41\" width=\"10\" height=\"10\"/>"]};
+const PAL=[['#FA4416','כתום','color.orange'],['#F00202','אדום','color.red'],['#D8319A','ורוד','color.pink'],['#5E0160','סגול','color.purple'],['#3E27B3','כחול','color.blue'],['#0270B6','תכלת','color.cyan'],['#188C5B','ירוק','color.green'],['#EBB61D','צהוב','color.yellow'],['#1C1A18','שחור','color.ink']];
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const SH={};SHAPES.forEach(s=>SH[s.id]=s);
+const svg=(s,c)=>`<svg viewBox="${s.vb}" aria-hidden="true">${s.body.replaceAll('{c}',c||s.main)}</svg>`;
+function num(str,color='#1C1A18'){let x=0,p='';for(const ch of String(str)){const d=DIG[ch];if(!d)continue;p+=`<g transform="translate(${x} 0)" fill="${color}">${d[1]}</g>`;x+=d[0]+7}return `<svg viewBox="0 0 ${Math.max(1,x-7)} 66" aria-label="${str}">${p}</svg>`}
+const LOGO=(c='#1C1A18')=>`<svg viewBox="0 0 440 105" aria-label="FORM">${[['F',0],['O',118.5],['R',216.4]].map(([l,x])=>`<path transform="translate(${x} 0)" d="${GLY[l]}" fill="${c}" fill-rule="evenodd"/>`).join('')}<g transform="translate(328.1 0)"><rect x="1.5" y="2" width="32.75" height="101" fill="${c}"/><rect x="38.5" y="2" width="33.75" height="101" fill="#FA4416"/><rect x="75.75" y="2" width="33.5" height="101" fill="${c}"/></g></svg>`;
+$('#logo').innerHTML=LOGO();$('#biglogo').innerHTML=LOGO();
+// colours
+$('#sw').innerHTML=[...PAL,['#F2F1EE','נייר','color.paper'],['#E6E3DD','משבצת','color.cell']].map(([h,n,t])=>`<div><i style="background:${h}"></i><b>${n}</b><code>${t}</code><code>${h}</code></div>`).join('');
+// digits
+$('#digits').innerHTML=[...'0123456789'].map(d=>num(d)).join('');$('#hN').innerHTML=num(19);
+// grid demo
+const gd=['heart','dot','stripes','arch','bird','star','eye','flower','fourdots','zig'];
+$('#gridDemo').innerHTML=gd.map((k,i)=>`<div>${svg(SH[k]||SHAPES[i],PAL[(i*2)%9][0])}</div>`).join('');
+// all shapes
+$('#shapes').innerHTML=SHAPES.map(s=>`<button data-k="${s.id}" data-i="-1" title="${s.id}">${svg(s)}<span>${s.id}</span></button>`).join('');
+$$('#shapes button').forEach(b=>b.onclick=()=>{const i=(+b.dataset.i+1)%9;b.dataset.i=i;b.innerHTML=svg(SH[b.dataset.k],PAL[i][0])+`<span>${b.dataset.k}</span>`;});
+// shape picker
+const pick=['heart','stars','bird','eye','flower','dot','arch','zig','boot','fourdots'].filter(k=>SH[k]);let shape='stars',col='#188C5B',cp=false;
+const mp=$('#mPick');mp.innerHTML=pick.map(k=>`<button class="c" data-k="${k}">${svg(SH[k],'#1C1A18')}</button>`).join('');
+mp.onclick=e=>{const b=e.target.closest('button');if(!b)return;mp.classList.add('has');$$('#mPick .c').forEach(x=>x.classList.toggle('sel',x===b));shape=b.dataset.k;prev();};
+// colour picker
+const pal=$('#mPal');pal.innerHTML=PAL.map(([h])=>`<button class="c" data-c="${h}" style="background:${h}"></button>`).join('');
+pal.onclick=e=>{const b=e.target.closest('button');if(!b)return;pal.classList.add('has');$$('#mPal .c').forEach(x=>x.classList.toggle('sel',x===b));col=b.dataset.c;prev();};
+function prev(){$('#mPrev').innerHTML=svg(SH[shape],col);}prev();
+// time
+let hh=9,allDay=false;const clock=()=>{$('#mClock').innerHTML=num(String(hh).padStart(2,'0')+':00').replace('<svg','<svg style="opacity:'+(allDay?.25:1)+'"');};clock();
+$('#mClock').onclick=()=>{if(allDay)return;hh=hh>=21?7:hh+1;clock();};
+$$('#mTime [data-d]').forEach(b=>b.onclick=()=>{$$('#mTime [data-d]').forEach(x=>x.classList.toggle('on',x===b));});
+$('#mAll').onclick=()=>{allDay=!allDay;$('#mAll').classList.toggle('on',allDay);clock();};
+// repeat
+$$('#mRep button').forEach(b=>b.onclick=()=>$$('#mRep button').forEach(x=>x.classList.toggle('on',x===b)));
+// day row
+$('#mDay').innerHTML=`<h6>היום · יום חמישי 19.11</h6><div class="og">${[['stripes','#F00202'],['stars','#188C5B'],['heart','#EBB61D'],['bird','#3E27B3']].filter(([k])=>SH[k]).map(([k,c])=>`<div class="c">${svg(SH[k],c)}</div>`).join('')}</div>`;
+// tabs follow scroll
+const secs=$$('section[id]');const tabs=$$('#tabs a');
+addEventListener('scroll',()=>{let cur=secs[0].id;secs.forEach(s=>{if(s.getBoundingClientRect().top<160)cur=s.id;});tabs.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));},{passive:true});
+</script>
+</body>
+</html>
