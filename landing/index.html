@@ -26,16 +26,25 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:1
 .btn:hover{transform:translateY(-1px)}.btn:active{transform:scale(.97)}
 .btn.or{background:var(--orange)}.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
 .btn.sm{height:40px;padding:0 20px;font-size:14px}
-/* hero */
-.hero{height:calc(100vh - var(--nav));min-height:640px;max-height:1000px}
-.hero .wrap{height:100%;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:72px;align-items:center}
-.kicker{color:var(--orange);font-size:18px;font-weight:700;margin:0 0 20px}
+/* hero = poster that fills while scrolling */
+.fill{height:340vh;position:relative}
+.stick{position:sticky;top:var(--nav);height:calc(100vh - var(--nav));min-height:620px}
+.stick .wrap{height:100%;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:72px;align-items:center}
+.slot{position:relative;height:250px;margin-top:46px}
+.slot>*{position:absolute;right:0;top:0;transition:opacity .45s,transform .55s cubic-bezier(.2,.8,.2,1)}
+.slot .off{opacity:0;transform:translateY(18px);pointer-events:none}
+.cue{position:absolute;left:50%;bottom:-44px;transform:translateX(-50%);display:flex;align-items:center;gap:8px;color:var(--muted);font-size:15px;white-space:nowrap;transition:opacity .3s}
+.cue i{display:block;width:2px;height:22px;background:var(--muted);border-radius:1px;animation:cue 1.6s ease-in-out infinite}
+@keyframes cue{0%,100%{transform:translateY(-4px);opacity:.4}50%{transform:translateY(4px);opacity:1}}
+.cc{background:var(--ink);color:var(--paper);border-radius:26px;padding:28px 32px;width:min(520px,100%);display:grid;gap:10px;box-shadow:0 30px 60px -30px rgba(28,26,24,.6)}
+.cc .lg{display:flex;align-items:center;gap:12px;font-size:34px;font-weight:700}
+.cc .lg .logo{width:120px}
+.cc p{margin:0;color:#CFCAC0;font-size:18px;line-height:1.5}
+.cc .row{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
+.cc .pr{display:flex;align-items:flex-end;gap:8px}.cc .pr .n svg{height:44px;width:auto}.cc .pr span{font-size:17px;padding-bottom:4px}
+.kicker{display:inline-block;color:var(--orange);font-size:20px;font-weight:700;margin:0 0 22px;text-decoration:none}
 h1{font-size:clamp(64px,6.6vw,104px);line-height:.98;margin:0;font-weight:700;letter-spacing:-.02em}
-.welcome{margin:30px 0 34px;font-size:21px;line-height:1.5}
-.welcome b{display:block}
-.welcome span{color:var(--muted)}
-.ctas{display:flex;gap:12px}
-.tick{margin-top:44px;display:flex;align-items:center;gap:18px;height:84px;padding:0 22px 0 26px;border-radius:20px;background:#fff8;box-shadow:inset 0 0 0 1.5px var(--line);width:max-content;min-width:420px}
+.tick{display:flex;align-items:center;gap:18px;height:84px;padding:0 22px 0 26px;border-radius:20px;background:#fff8;box-shadow:inset 0 0 0 1.5px var(--line);width:max-content;min-width:420px}
 .tick .pc{width:52px;height:52px;display:flex;align-items:center;justify-content:center}
 .tick .pc img{max-width:52px;max-height:52px}
 .tick .d{display:flex;align-items:flex-end;gap:8px;direction:rtl}
@@ -43,13 +52,11 @@ h1{font-size:clamp(64px,6.6vw,104px);line-height:.98;margin:0;font-weight:700;le
 .tick .d small{font-size:15px;color:var(--muted);padding-bottom:3px}
 .tick .t{font-size:18px;font-weight:700;min-width:150px}
 .tick .bar{width:3px;align-self:stretch;margin:18px 0;background:var(--line);border-radius:2px}
-.replay{border:0;background:none;color:var(--muted);font-size:14px;cursor:pointer;padding:6px 0;margin-top:10px;display:none}
-.replay.on{display:block}
-.pwrap{position:relative;height:min(calc(100vh - var(--nav) - 80px),860px);aspect-ratio:842/1191}
+.pwrap{position:relative;height:min(calc(100vh - var(--nav) - 150px),820px);aspect-ratio:842/1191;margin-top:-24px}
 .poster{position:absolute;inset:0;background:var(--paper);box-shadow:0 40px 80px -30px rgba(28,26,24,.35),0 0 0 1px rgba(28,26,24,.06)}
 .poster>img{position:absolute;display:block}
 .poster .txt{inset:0;width:100%;height:100%}
-.poster .pz{opacity:0;transform:scale(.55);transition:opacity .3s,transform .5s cubic-bezier(.3,1.6,.5,1)}
+.poster .pz{opacity:0;transform:scale(.55);transition:opacity .25s,transform .4s cubic-bezier(.3,1.6,.5,1)}
 .poster .pz.on{opacity:1;transform:none}
 .poster .pz.hl{animation:hl .9s}
 @keyframes hl{0%{filter:drop-shadow(0 0 0 rgba(250,68,22,0))}30%{filter:drop-shadow(0 6px 14px rgba(28,26,24,.35))}100%{filter:drop-shadow(0 0 0 rgba(28,26,24,0))}}
@@ -65,15 +72,20 @@ h1{font-size:clamp(64px,6.6vw,104px);line-height:.98;margin:0;font-weight:700;le
 .teaser{padding:30px 0 10px}
 .tz{position:relative;max-width:1240px;margin:0 auto}
 .tz video{width:100%;display:block;border-radius:24px;background:var(--paper);box-shadow:0 30px 80px rgba(28,26,24,.14)}
-.snd{position:absolute;left:20px;bottom:20px;display:flex;align-items:center;gap:8px;border:0;border-radius:24px;padding:11px 20px;background:var(--ink);color:var(--paper);font:700 15px/1 var(--font);cursor:pointer;opacity:.94}
-.snd.on{background:var(--orange)}
+.tz video{cursor:pointer}
+.vctl{position:absolute;left:20px;bottom:20px;display:flex;gap:10px}
+.vctl button{display:flex;align-items:center;gap:9px;border:0;border-radius:26px;height:50px;padding:0 22px 0 18px;background:var(--ink);color:var(--paper);font:700 16px/1 var(--font);cursor:pointer;box-shadow:0 10px 30px rgba(28,26,24,.25)}
+.vctl button.on{background:var(--orange)}
+.vctl svg{width:22px;height:22px}
+.bigplay{position:absolute;left:50%;top:50%;width:110px;height:110px;margin:-55px 0 0 -55px;border-radius:50%;border:0;background:var(--orange);color:#fff;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 20px 50px rgba(250,68,22,.4)}
+.bigplay.on{display:flex}.bigplay svg{width:44px;height:44px;margin-left:6px}
 /* screens */
 .screens{padding:40px 0 30px}
 h2{font-size:56px;margin:0 0 40px;line-height:1.05;letter-spacing:-.01em}
 .row4{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;justify-items:center}
-.ph{width:min(100%,260px);aspect-ratio:390/844;border-radius:40px;background:var(--ink);padding:10px;box-shadow:0 30px 60px -30px rgba(28,26,24,.45)}
-.ph div{width:100%;height:100%;border-radius:31px;overflow:hidden;background:var(--paper)}
-.ph img{width:100%;height:100%;display:block;object-fit:cover}
+.ph{width:min(100%,262px);border-radius:42px;background:var(--ink);padding:11px;box-shadow:0 30px 60px -30px rgba(28,26,24,.45)}
+.ph div{width:100%;aspect-ratio:390/844;border-radius:32px;overflow:hidden;background:var(--paper)}
+.ph img{width:100%;height:100%;display:block}
 figure{margin:0;text-align:center}
 figcaption{margin-top:20px;font-size:22px;font-weight:700}
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s cubic-bezier(.2,.8,.2,1)}
@@ -87,8 +99,8 @@ figcaption{margin-top:20px;font-size:22px;font-weight:700}
 .price .n svg{height:110px;width:auto}
 .price span{font-size:22px;padding-bottom:12px}
 .club p{color:#BDB8AE;font-size:19px;line-height:1.55;margin:0;max-width:640px}
-.wall{display:flex;gap:34px;margin-top:40px;align-items:flex-start}
-.hang{position:relative;width:150px;padding:9px 0}
+.wall{display:flex;gap:32px;margin-top:56px;align-items:flex-start}
+.hang{position:relative;width:176px;padding:9px 0}
 .hang img{width:100%;display:block;box-shadow:0 18px 30px -16px rgba(0,0,0,.6)}
 .hang .rod{position:absolute;left:-9px;right:-9px;height:9px;border-radius:5px;background:linear-gradient(var(--wood),var(--wood2));opacity:0;transform:scaleX(.6);transition:opacity .35s,transform .45s cubic-bezier(.3,1.5,.5,1)}
 .hang .rod.t{top:2px}.hang .rod.b{bottom:2px}
@@ -135,25 +147,27 @@ footer .logo{width:96px}
 <body>
 <nav><div class="wrap"><a href="#top" aria-label="FORM"><span class="logo" id="navlogo"></span></a>
  <div class="links"><a href="#teaser">טיזר</a><a href="#screens">האפליקציה</a><a href="#club">FORM Club</a></div>
- <button class="btn sm" data-app>לאפליקציה</button></div></nav>
+ <button class="btn or sm" data-app>לפתוח את האפליקציה</button></div></nav>
 
-<header class="hero" id="top"><div class="wrap">
+<section class="fill" id="top"><div class="stick"><div class="wrap">
  <div>
-  <p class="kicker">יומן בהשראת ברברה סטאופכר סולומון</p>
+  <span class="kicker">יומן בהשראת ברברה סטאופכר סולומון</span>
   <h1>תני צורה<br>ליום שלך</h1>
-  <p class="welcome"><b>ברוכה הבאה ל־FORM Club.</b><span>כל משימה ביומן נהיית צורה בפוסטר של החודש.</span></p>
-  <div class="ctas"><button class="btn or" data-app>לפתוח את האפליקציה</button><a class="btn ghost" href="#club">להירשם לשנה</a></div>
-  <div class="tick" id="tick"><span class="pc" id="tPc"></span><span class="d"><span class="n" id="tN"></span><small>בדצמבר</small></span><i class="bar"></i><span class="t" id="tT"></span></div>
-  <button class="replay" id="replay">↻ למלא את הפוסטר שוב</button>
+  <div class="slot">
+   <div><div class="tick off" id="tick"><span class="pc" id="tPc"></span><span class="d"><span class="n" id="tN"></span><small>בדצמבר</small></span><i class="bar"></i><span class="t" id="tT"></span></div></div>
+   <div class="cc off" id="cc"><div class="lg">FORM Club</div><p>הפוסטר הזה נבנה מהיומן של דצמבר.<br>בכל סוף חודש הפוסטר שלך מודפס ומגיע אלייך הביתה.</p>
+    <div class="row"><div class="pr"><span class="n" id="ccNum"></span><span>₪ לשנה</span></div><a class="btn or" href="#club">להצטרף ל־FORM Club</a></div></div>
+  </div>
  </div>
- <div class="pwrap"><span class="tag">הפוסטר שלך · דצמבר</span><div class="poster" id="poster"></div></div>
-</div></header>
+ <div class="pwrap"><span class="tag">הפוסטר שלך · דצמבר</span><div class="poster" id="poster"></div><div class="cue" id="cue"><i></i>גללי למטה והפוסטר יתמלא</div></div>
+</div></div></section>
 
 <div class="strip" id="s1"></div>
 
 <section class="teaser" id="teaser"><div class="wrap">
  <div class="tz"><video src="teaser.mp4" poster="teaser.jpg" autoplay muted loop playsinline preload="auto"></video>
- <button class="snd" aria-label="להפעיל סאונד"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 9h4l5-4v14l-5-4H3z" fill="currentColor"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>עם סאונד</span></button></div>
+ <button class="bigplay" id="bp" aria-label="הפעלה"><svg viewBox="0 0 24 24"><path d="M6 4l15 8-15 8z" fill="currentColor"/></svg></button>
+ <div class="vctl"><button id="vp"><svg viewBox="0 0 24 24" id="vpi"></svg><span></span></button><button id="vs"><svg viewBox="0 0 24 24" id="vsi"></svg><span></span></button></div></div>
 </div></section>
 
 <section class="screens" id="screens"><div class="wrap">
@@ -173,8 +187,9 @@ footer .logo{width:96px}
   <div class="price"><span class="n" id="priceNum"></span><span>₪ לשנה</span></div>
   <p>12 פוסטרים בשנה, אחד בסוף כל חודש, מודפסים ב־A3 ונשלחים עד הבית.</p>
   <div class="wall" id="wall">
-   <div class="hang"><svg viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M3 40L50 3L97 40" fill="none" stroke="#B4875A" stroke-width="2"/></svg><i class="rod t"></i><img src="img/poster_nov.jpg" alt="פוסטר נובמבר"><i class="rod b"></i></div>
-   <div class="hang"><svg viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M3 40L50 3L97 40" fill="none" stroke="#B4875A" stroke-width="2"/></svg><i class="rod t"></i><img src="img/poster_dec.jpg" alt="פוסטר דצמבר"><i class="rod b"></i></div>
+   <div class="hang"><svg viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M3 40L50 3L97 40" fill="none" stroke="#B4875A" stroke-width="2"/></svg><i class="rod t"></i><img src="img/poster_p1.jpg" alt="פוסטר דצמבר"><i class="rod b"></i></div>
+   <div class="hang"><svg viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M3 40L50 3L97 40" fill="none" stroke="#B4875A" stroke-width="2"/></svg><i class="rod t"></i><img src="img/poster_p2.jpg" alt="פוסטר נובמבר"><i class="rod b"></i></div>
+   <div class="hang"><svg viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M3 40L50 3L97 40" fill="none" stroke="#B4875A" stroke-width="2"/></svg><i class="rod t"></i><img src="img/poster_p3.jpg" alt="פוסטר ינואר"><i class="rod b"></i></div>
   </div>
  </div>
  <form class="form" id="form" novalidate>
@@ -211,18 +226,26 @@ const TASKS=['ריצה בבוקר','קפה עם נועה','הגשה בטיפוג
 const P=$('#poster');
 P.innerHTML='<img class="txt" src="img/poster_b_text.png" alt="">'+PIECES.map((p,i)=>`<img class="pz" data-i="${i}" src="img/${p.f.replace('pieces/','pieces/')}" style="left:${p.x}%;top:${p.y}%;width:${p.w}%;height:${p.h}%" alt="">`).join('');
 const ord=PIECES.map((p,i)=>i).sort((a,b)=>PIECES[a].r-PIECES[b].r||PIECES[b].c-PIECES[a].c);
-const pz=$$('#poster .pz');let timer=null;
-function fill(){clearTimeout(timer);pz.forEach(e=>e.classList.remove('on','hl'));$('#replay').classList.remove('on');let k=0;
- const step=()=>{if(k>=ord.length){$('#tN').innerHTML=num(31);$('#tT').textContent='הפוסטר מוכן';$('#tPc').innerHTML='';$('#replay').classList.add('on');return;}
-  const i=ord[k];const day=Math.floor(k*31/ord.length)+1;const e=pz[i];e.classList.add('on','hl');
-  $('#tN').innerHTML=num(day);$('#tT').textContent=TASKS[day-1];$('#tPc').innerHTML=`<img src="${e.getAttribute('src')}" alt="">`;
-  k++;timer=setTimeout(step,k<4?520:260);};
- timer=setTimeout(step,700);}
-$('#tN').innerHTML=num(1);$('#tT').textContent='';
-addEventListener('load',fill);$('#replay').onclick=fill;
+const pz=$$('#poster .pz');const FS=$('#top');let shown=-1;$('#ccNum').innerHTML=num(100,'#F2F1EE');
+function fillScroll(){const r=FS.getBoundingClientRect();const p=Math.min(1,Math.max(0,-r.top/(r.height-innerHeight)));
+ const n=Math.min(ord.length,Math.floor(p/0.8*ord.length+0.0001));
+ if(n!==shown){ord.forEach((i,k)=>{pz[i].classList.toggle('on',k<n);});
+  if(n>shown&&n>0){const e=pz[ord[n-1]];e.classList.remove('hl');void e.offsetWidth;e.classList.add('hl');}
+  shown=n;const day=n?Math.floor((n-1)*31/ord.length)+1:1;
+  if(n>0){$('#tN').innerHTML=num(day);$('#tT').textContent=TASKS[day-1];$('#tPc').innerHTML=`<img src="${pz[ord[n-1]].getAttribute('src')}" alt="">`;}}
+ const done=n>=ord.length&&p>0.86;$('#tick').classList.toggle('off',n===0||done);$('#cc').classList.toggle('off',!done);$('#cue').style.opacity=p>0.03?0:1;}
+addEventListener('scroll',()=>requestAnimationFrame(fillScroll),{passive:true});fillScroll();
 // teaser sound
-(()=>{const b=$('.snd'),v=$('.tz video'),lab=b.querySelector('span');v.play&&v.play().catch(()=>{});
- b.onclick=()=>{if(v.muted){v.muted=false;v.currentTime=0;v.play();b.classList.add('on');lab.textContent='בלי סאונד';}else{v.muted=true;b.classList.remove('on');lab.textContent='עם סאונד';}};})();
+(()=>{const v=$('.tz video'),vp=$('#vp'),vs=$('#vs'),bp=$('#bp');
+ const IC={pause:'<path d="M6 4h4v16H6zM14 4h4v16h-4z" fill="currentColor"/>',play:'<path d="M6 4l15 8-15 8z" fill="currentColor"/>',
+  off:'<path d="M3 9h4l5-4v14l-5-4H3z" fill="currentColor"/><path d="M16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+  on:'<path d="M3 9h4l5-4v14l-5-4H3z" fill="currentColor"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>'};
+ const ui=()=>{const pl=!v.paused;vp.querySelector('svg').innerHTML=pl?IC.pause:IC.play;vp.querySelector('span').textContent=pl?'עצירה':'הפעלה';
+  vs.querySelector('svg').innerHTML=v.muted?IC.off:IC.on;vs.querySelector('span').textContent=v.muted?'להפעיל סאונד':'להשתיק';vs.classList.toggle('on',!v.muted);bp.classList.toggle('on',!pl);};
+ const toggle=()=>{v.paused?v.play():v.pause();};
+ vp.onclick=toggle;v.onclick=toggle;bp.onclick=()=>v.play();
+ vs.onclick=()=>{if(v.muted){v.muted=false;v.currentTime=0;v.play();}else v.muted=true;ui();};
+ ['play','pause','volumechange'].forEach(ev=>v.addEventListener(ev,ui));v.play&&v.play().catch(()=>{});ui();})();
 // reveal
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});$$('.reveal').forEach(e=>io.observe(e));
 // app modal
