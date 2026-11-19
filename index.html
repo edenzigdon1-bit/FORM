@@ -322,9 +322,9 @@ function splash(){const sp=$('#splash'),g=$('#sgrid');const vw=innerWidth,vh=inn
  let seed=11;const r=()=>{seed=(seed*16807)%2147483647;return (seed-1)/2147483646};
  const HMARK=`<svg viewBox="0 0 105 111"><rect x="2" y="1.5" width="101" height="32.75" fill="#1C1A18"/><rect x="2" y="38.5" width="101" height="33.75" fill="#FA4416"/><rect x="2" y="75.75" width="101" height="33.5" fill="#1C1A18"/></svg>`;
  let html='';for(let y=0;y<R;y++)for(let x=0;x<C;x++){if(x===AC&&y===AR){html+=`<div class="a">${HMARK}</div>`;continue;}const s=SHAPES[Math.floor(r()*SHAPES.length)];const c=r()<.5?s.main:PAL[Math.floor(r()*PAL.length)][0];html+=`<div>${svg(s.id,c)}</div>`;}
- const K=Math.min(vw*0.62,vh*0.32)/T;g.style.gridTemplateColumns=`repeat(${C},${T*K}px)`;g.style.gap=(P-T)*K+'px';g.innerHTML=html;
+ const K=Math.min(vw*0.62,vh*0.32)/T;const L=Math.min(K,2.6);g.style.gridTemplateColumns=`repeat(${C},${T*L}px)`;g.style.gap=(P-T)*L+'px';g.innerHTML=html;
  const ox=(vw-(C*P-(P-T)))/2,oy=(vh-(R*P-(P-T)))/2;const ax=AC*P+T/2,ay=AR*P+T/2;
- const tfFull=`translate(${ox}px,${oy}px) scale(${1/K})`;const tf=s=>`translate(${vw/2-ax*s}px,${vh/2-ay*s}px) scale(${s/K})`;
+ const tfFull=`translate(${ox}px,${oy}px) scale(${1/L})`;const tf=s=>`translate(${vw/2-ax*s}px,${vh/2-ay*s}px) scale(${s/L})`;
  g.style.transform=tfFull;$('#stitle').textContent='';
  const lg=$('#slogo');lg.innerHTML=LETTERS+`<div id="smark">${MARK}</div>`;lg.style.opacity=0;const sl=$('#sslog');
  let done=false;const end=()=>{if(done)return;done=true;sp.style.pointerEvents='none';sp.style.transition='opacity .35s';sp.style.opacity='0';setTimeout(()=>sp.remove(),450);};sp.addEventListener('click',end);
