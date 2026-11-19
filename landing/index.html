@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FORM · תני צורה ליום שלך</title>
+<meta name="description" content="FORM, יומן בהשראת ברברה סטאופכר סולומון. כל משימה היא צורה, וכל חודש נהיה פוסטר.">
+<meta name="theme-color" content="#F2F1EE">
+<link rel="icon" href="img/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F2F1EE;--ink:#1C1A18;--muted:#6B655E;--line:#D6D2C9;--orange:#FA4416;--wood:#B4875A;--wood2:#8E6640;
+ --font:"Helvetica Hebrew",Arimo,"Helvetica Neue",Helvetica,Arial,sans-serif;--nav:64px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-width:1100px;background:var(--paper);color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased}
+a{color:inherit}button,input{font-family:var(--font)}svg{display:block}
+.wrap{max-width:1320px;margin:0 auto;padding:0 56px}
+/* nav */
+nav{position:sticky;top:0;z-index:30;height:var(--nav);background:rgba(242,241,238,.9);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:100%}
+.logo{display:block;width:112px;direction:ltr}
+.links{display:flex;gap:30px;font-size:15px}.links a{text-decoration:none;color:var(--muted)}.links a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 28px;border-radius:26px;background:var(--ink);color:var(--paper);font-weight:700;font-size:17px;text-decoration:none;border:0;cursor:pointer;transition:transform .15s,background .2s}
+.btn:hover{transform:translateY(-1px)}.btn:active{transform:scale(.97)}
+.btn.or{background:var(--orange)}.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.btn.sm{height:40px;padding:0 20px;font-size:14px}
+/* hero */
+.hero{height:calc(100vh - var(--nav));min-height:640px;max-height:1000px}
+.hero .wrap{height:100%;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:72px;align-items:center}
+.kicker{color:var(--orange);font-size:18px;font-weight:700;margin:0 0 20px}
+h1{font-size:clamp(64px,6.6vw,104px);line-height:.98;margin:0;font-weight:700;letter-spacing:-.02em}
+.welcome{margin:30px 0 34px;font-size:21px;line-height:1.5}
+.welcome b{display:block}
+.welcome span{color:var(--muted)}
+.ctas{display:flex;gap:12px}
+.tick{margin-top:44px;display:flex;align-items:center;gap:18px;height:84px;padding:0 22px 0 26px;border-radius:20px;background:#fff8;box-shadow:inset 0 0 0 1.5px var(--line);width:max-content;min-width:420px}
+.tick .pc{width:52px;height:52px;display:flex;align-items:center;justify-content:center}
+.tick .pc img{max-width:52px;max-height:52px}
+.tick .d{display:flex;align-items:flex-end;gap:8px;direction:rtl}
+.tick .d .n svg{height:40px;width:auto}
+.tick .d small{font-size:15px;color:var(--muted);padding-bottom:3px}
+.tick .t{font-size:18px;font-weight:700;min-width:150px}
+.tick .bar{width:3px;align-self:stretch;margin:18px 0;background:var(--line);border-radius:2px}
+.replay{border:0;background:none;color:var(--muted);font-size:14px;cursor:pointer;padding:6px 0;margin-top:10px;display:none}
+.replay.on{display:block}
+.pwrap{position:relative;height:min(calc(100vh - var(--nav) - 80px),860px);aspect-ratio:842/1191}
+.poster{position:absolute;inset:0;background:var(--paper);box-shadow:0 40px 80px -30px rgba(28,26,24,.35),0 0 0 1px rgba(28,26,24,.06)}
+.poster>img{position:absolute;display:block}
+.poster .txt{inset:0;width:100%;height:100%}
+.poster .pz{opacity:0;transform:scale(.55);transition:opacity .3s,transform .5s cubic-bezier(.3,1.6,.5,1)}
+.poster .pz.on{opacity:1;transform:none}
+.poster .pz.hl{animation:hl .9s}
+@keyframes hl{0%{filter:drop-shadow(0 0 0 rgba(250,68,22,0))}30%{filter:drop-shadow(0 6px 14px rgba(28,26,24,.35))}100%{filter:drop-shadow(0 0 0 rgba(28,26,24,0))}}
+.tag{position:absolute;top:-16px;right:24px;z-index:3;background:var(--ink);color:var(--paper);font-size:14px;font-weight:700;padding:8px 16px;border-radius:18px;letter-spacing:.02em}
+/* strip */
+.strip{overflow:hidden;padding:46px 0;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);direction:ltr}
+.strip .in{display:flex;width:max-content;animation:slide 60s linear infinite}
+.strip .row{display:flex;gap:34px;padding-right:34px}
+.strip svg{width:76px;height:76px;flex:none}
+.strip.rev .in{animation-direction:reverse;animation-duration:70s}
+@keyframes slide{to{transform:translateX(-50%)}}
+/* teaser */
+.teaser{padding:30px 0 10px}
+.tz{position:relative;max-width:1240px;margin:0 auto}
+.tz video{width:100%;display:block;border-radius:24px;background:var(--paper);box-shadow:0 30px 80px rgba(28,26,24,.14)}
+.snd{position:absolute;left:20px;bottom:20px;display:flex;align-items:center;gap:8px;border:0;border-radius:24px;padding:11px 20px;background:var(--ink);color:var(--paper);font:700 15px/1 var(--font);cursor:pointer;opacity:.94}
+.snd.on{background:var(--orange)}
+/* screens */
+.screens{padding:40px 0 30px}
+h2{font-size:56px;margin:0 0 40px;line-height:1.05;letter-spacing:-.01em}
+.row4{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;justify-items:center}
+.ph{width:min(100%,260px);aspect-ratio:390/844;border-radius:40px;background:var(--ink);padding:10px;box-shadow:0 30px 60px -30px rgba(28,26,24,.45)}
+.ph div{width:100%;height:100%;border-radius:31px;overflow:hidden;background:var(--paper)}
+.ph img{width:100%;height:100%;display:block;object-fit:cover}
+figure{margin:0;text-align:center}
+figcaption{margin-top:20px;font-size:22px;font-weight:700}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.row4 figure:nth-child(2){transition-delay:.08s}.row4 figure:nth-child(3){transition-delay:.16s}.row4 figure:nth-child(4){transition-delay:.24s}
+/* club */
+.club{background:var(--ink);color:var(--paper);min-height:100vh;display:flex;align-items:center;padding:60px 0}
+.club .wrap{width:100%;display:grid;grid-template-columns:minmax(0,1fr) 500px;gap:80px;align-items:center}
+.club h2{margin:0 0 10px;font-size:64px}
+.price{display:flex;align-items:flex-end;gap:14px;margin:18px 0 14px}
+.price .n svg{height:110px;width:auto}
+.price span{font-size:22px;padding-bottom:12px}
+.club p{color:#BDB8AE;font-size:19px;line-height:1.55;margin:0;max-width:640px}
+.wall{display:flex;gap:34px;margin-top:40px;align-items:flex-start}
+.hang{position:relative;width:150px;padding:9px 0}
+.hang img{width:100%;display:block;box-shadow:0 18px 30px -16px rgba(0,0,0,.6)}
+.hang .rod{position:absolute;left:-9px;right:-9px;height:9px;border-radius:5px;background:linear-gradient(var(--wood),var(--wood2));opacity:0;transform:scaleX(.6);transition:opacity .35s,transform .45s cubic-bezier(.3,1.5,.5,1)}
+.hang .rod.t{top:2px}.hang .rod.b{bottom:2px}
+.hang svg{position:absolute;left:50%;top:-38px;width:64%;height:40px;transform:translateX(-50%);opacity:0;transition:opacity .35s}
+.rods-on .hang .rod{opacity:1;transform:none}.rods-on .hang svg{opacity:1}
+.form{background:#fff;color:var(--ink);border-radius:26px;padding:30px 32px;display:grid;gap:14px}
+.form label{font-size:13px;color:var(--muted);display:grid;gap:6px;min-width:0}
+.form input[type=text],.form input[type=email]{width:100%;min-width:0;height:46px;border:1.5px solid var(--line);border-radius:12px;padding:0 14px;font-size:16px;background:var(--paper);color:var(--ink);outline:none}
+.form input:focus{border-color:var(--ink)}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.addon{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;border:1.5px solid var(--line);border-radius:16px;padding:14px 16px;cursor:pointer;transition:border-color .2s}
+.addon.on{border-color:var(--ink)}
+.addon .chk{width:24px;height:24px;border-radius:7px;border:2px solid var(--ink);display:flex;align-items:center;justify-content:center}
+.addon.on .chk{background:var(--orange);border-color:var(--orange)}
+.addon.on .chk::after{content:'';width:10px;height:5px;border:solid #fff;border-width:0 0 2.5px 2.5px;transform:rotate(-45deg) translate(1px,-1px)}
+.addon b{display:block;font-size:16px;margin-bottom:3px}.addon small{color:var(--muted);font-size:13px}
+.addon svg{width:64px}
+.total{display:flex;justify-content:space-between;align-items:baseline;font-size:16px;padding:2px 2px}
+.total b{font-size:22px}
+.form .note{font-size:12px;color:var(--muted);text-align:center;margin:0;max-width:none}
+.done{text-align:center;padding:26px 6px}
+.done .logo{width:150px;margin:0 auto 22px}
+.done b{font-size:24px;display:block;margin-bottom:10px}
+.done span{color:var(--muted);line-height:1.6}
+footer{padding:34px 0 40px;background:var(--ink);color:#8F897F;border-top:1px solid #34312d}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;font-size:14px}
+footer .logo{width:96px}
+/* app modal */
+.modal{position:fixed;inset:0;z-index:50;background:rgba(28,26,24,.55);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);display:none;align-items:center;justify-content:center;gap:40px}
+.modal.on{display:flex;animation:fade .3s}
+@keyframes fade{from{opacity:0}}
+.mph{position:relative;background:#141312;border-radius:calc(56px * var(--k));padding:calc(12px * var(--k));box-shadow:0 0 0 2px #3a3835 inset,0 40px 100px rgba(0,0,0,.5);animation:up .5s cubic-bezier(.2,.9,.2,1)}
+@keyframes up{from{transform:translateY(40px) scale(.96);opacity:0}}
+.mscr{position:relative;width:calc(390px * var(--k));height:calc(844px * var(--k));border-radius:calc(46px * var(--k));overflow:hidden;background:var(--paper)}
+.mscr iframe{position:absolute;left:0;top:0;width:390px;height:844px;border:0;transform:scale(var(--k));transform-origin:0 0}
+.mside{display:grid;gap:12px;color:var(--paper);width:220px}
+.mside b{font-size:26px;line-height:1.2}
+.mside span{color:#D9D5CC;font-size:15px;line-height:1.5}
+.mside a{color:var(--paper);font-size:14px;opacity:.8}
+.x{position:absolute;top:24px;left:24px;width:48px;height:48px;border-radius:50%;border:0;background:var(--paper);color:var(--ink);font-size:26px;line-height:1;cursor:pointer}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><a href="#top" aria-label="FORM"><span class="logo" id="navlogo"></span></a>
+ <div class="links"><a href="#teaser">טיזר</a><a href="#screens">האפליקציה</a><a href="#club">FORM Club</a></div>
+ <button class="btn sm" data-app>לאפליקציה</button></div></nav>
+
+<header class="hero" id="top"><div class="wrap">
+ <div>
+  <p class="kicker">יומן בהשראת ברברה סטאופכר סולומון</p>
+  <h1>תני צורה<br>ליום שלך</h1>
+  <p class="welcome"><b>ברוכה הבאה ל־FORM Club.</b><span>כל משימה ביומן נהיית צורה בפוסטר של החודש.</span></p>
+  <div class="ctas"><button class="btn or" data-app>לפתוח את האפליקציה</button><a class="btn ghost" href="#club">להירשם לשנה</a></div>
+  <div class="tick" id="tick"><span class="pc" id="tPc"></span><span class="d"><span class="n" id="tN"></span><small>בדצמבר</small></span><i class="bar"></i><span class="t" id="tT"></span></div>
+  <button class="replay" id="replay">↻ למלא את הפוסטר שוב</button>
+ </div>
+ <div class="pwrap"><span class="tag">הפוסטר שלך · דצמבר</span><div class="poster" id="poster"></div></div>
+</div></header>
+
+<div class="strip" id="s1"></div>
+
+<section class="teaser" id="teaser"><div class="wrap">
+ <div class="tz"><video src="teaser.mp4" poster="teaser.jpg" autoplay muted loop playsinline preload="auto"></video>
+ <button class="snd" aria-label="להפעיל סאונד"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M3 9h4l5-4v14l-5-4H3z" fill="currentColor"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>עם סאונד</span></button></div>
+</div></section>
+
+<section class="screens" id="screens"><div class="wrap">
+ <h2 class="reveal">מהמשימה לחודש</h2>
+ <div class="row4">
+  <figure class="reveal"><div class="ph"><div><img src="img/screen0.jpg" alt="מסך משימה"></div></div><figcaption>משימה</figcaption></figure>
+  <figure class="reveal"><div class="ph"><div><img src="img/screen1.jpg" alt="מסך יום"></div></div><figcaption>יום</figcaption></figure>
+  <figure class="reveal"><div class="ph"><div><img src="img/screen2.jpg" alt="מסך שבוע"></div></div><figcaption>שבוע</figcaption></figure>
+  <figure class="reveal"><div class="ph"><div><img src="img/screen3.jpg" alt="מסך חודש"></div></div><figcaption>חודש</figcaption></figure>
+ </div></div></section>
+
+<div class="strip rev" id="s2"></div>
+
+<section class="club" id="club"><div class="wrap">
+ <div>
+  <h2>FORM Club</h2>
+  <div class="price"><span class="n" id="priceNum"></span><span>₪ לשנה</span></div>
+  <p>12 פוסטרים בשנה, אחד בסוף כל חודש, מודפסים ב־A3 ונשלחים עד הבית.</p>
+  <div class="wall" id="wall">
+   <div class="hang"><svg viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M3 40L50 3L97 40" fill="none" stroke="#B4875A" stroke-width="2"/></svg><i class="rod t"></i><img src="img/poster_nov.jpg" alt="פוסטר נובמבר"><i class="rod b"></i></div>
+   <div class="hang"><svg viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M3 40L50 3L97 40" fill="none" stroke="#B4875A" stroke-width="2"/></svg><i class="rod t"></i><img src="img/poster_dec.jpg" alt="פוסטר דצמבר"><i class="rod b"></i></div>
+  </div>
+ </div>
+ <form class="form" id="form" novalidate>
+  <label>שם מלא<input type="text" name="name" autocomplete="name"></label>
+  <label>אימייל<input type="email" name="email" autocomplete="email"></label>
+  <div class="two"><label>רחוב ומספר<input type="text" name="street" autocomplete="address-line1"></label><label>עיר<input type="text" name="city" autocomplete="address-level2"></label></div>
+  <div class="addon" id="addon" role="checkbox" aria-checked="false" tabindex="0"><span class="chk"></span><div><b>מוטות עץ מגנטיים לתלייה</b><small>זוג מוטות עם הפוסטר הראשון · ‎+20 ₪</small></div><svg viewBox="0 0 70 50"><rect x="2" y="4" width="66" height="6" rx="3" fill="#B4875A"/><rect x="10" y="10" width="50" height="30" fill="#F2F1EE" stroke="#D6D2C9"/><rect x="2" y="40" width="66" height="6" rx="3" fill="#B4875A"/></svg></div>
+  <div class="total"><span>לתשלום עכשיו</span><b id="total">100 ₪</b></div>
+  <button class="btn or" type="submit">להירשם ל־FORM Club</button>
+  <p class="note">אב־טיפוס לפרויקט לימודי. לא נשמר מידע ולא מתבצע חיוב.</p>
+ </form>
+</div></section>
+<footer><div class="wrap"><span class="logo" id="footlogo"></span><span>תני צורה ליום שלך · בהשראת העבודות של ברברה סטאופכר סולומון</span></div></footer>
+
+<div class="modal" id="modal" aria-hidden="true"><button class="x" id="mx" aria-label="סגירה">×</button>
+ <div class="mph"><div class="mscr"><iframe id="appf" title="FORM" loading="lazy"></iframe></div></div>
+ <div class="mside"><b>FORM באפליקציה</b><span>אפשר להוסיף משימה, לבחור צורה וצבע, ולעבור בין יום, שבוע וחודש.</span><a id="appTab" target="_blank" rel="noopener">לפתוח בחלון נפרד ↗</a></div>
+</div>
+<script>
+const APP='https://edenzigdon1-bit.github.io/FORM/';
+const SHAPES=[{"id": "diamond", "name": "יהלום", "main": "#FA4416", "vb": "0.00 0.00 39.00 39.00", "body": "<path d=\"M18.8036 0L0 19.1579L18.8036 39L39 19.1579L18.8036 0Z\" fill=\"{c}\"/>", "vb_orig": "0.00 0.00 39 39"}, {"id": "arrow", "name": "חץ", "main": "#FA4416", "vb": "0.00 -0.09 61.00 59.17", "body": "<path d=\"M61 45.0591L45.626 59L19.3415 33.6076V59H0V0H61V20.1646H35.4594L61 45.0591Z\" fill=\"{c}\"/>", "vb_orig": "0.00 -1.00 61 61"}, {"id": "hook", "name": "גרש", "main": "#1C1A18", "vb": "-0.08 0.00 25.16 50.49", "body": "<path d=\"M25 50.5V26H11C10.6 15.6 19.5 10.3333 24 9V0C7.6 0.8 0 17.5 0 26V50.5H25Z\" fill=\"{c}\"/>", "vb_orig": "-13.00 0.00 51 51"}, {"id": "vbars", "name": "שלושה עמודים", "main": "#3E27B3", "vb": "0.00 -0.09 70.20 65.99", "body": "<path d=\"M0 65.8V0H21.94V65.8Z\" fill=\"{c}\"/><path d=\"M24.14 65.8V0H46.08V65.8Z\" fill=\"{c}\"/><path d=\"M48.27 65.8V0H70.21V65.8Z\" fill=\"{c}\"/>", "vb_orig": "-0.00 -2.20 70.2 70.2"}, {"id": "hbars", "name": "שלושה פסים", "main": "#1C1A18", "vb": "-0.09 0.00 65.99 70.20", "body": "<path d=\"M0 0H65.82V21.94H0Z\" fill=\"{c}\"/><path d=\"M0 24.14H65.82V46.08H0Z\" fill=\"{c}\"/><path d=\"M0 48.27H65.82V70.21H0Z\" fill=\"{c}\"/>", "vb_orig": "-2.20 -0.00 70.2 70.2"}, {"id": "wedge", "name": "כנף", "main": "#F00202", "vb": "0.00 -0.03 57.81 39.05", "body": "<path d=\"M15.2998 39C-9.70044 25 -0.70046 5 18.2996 0L57.7999 39H15.2998Z\" fill=\"{c}\"/>", "vb_orig": "0.00 -9.50 58 58"}, {"id": "heart", "name": "לב", "main": "#D8319A", "vb": "0.00 -0.09 65.00 62.18", "body": "<path d=\"M64.5482 24.4246L33.3167 62L1.5586 26.3387C-1.37742 21.711 -1.37727 0.205366 12.4981 0.205359C33.4931 0.205349 32.605 18.3536 29.5801 26.3387H35.452C31.4484 20.3498 30.2557 -2.38934 52.0001 0.205359C65.6159 1.8301 65.7048 16.2579 64.5482 24.4246Z\" fill=\"{c}\"/>", "vb_orig": "0.00 -1.50 65 65"}, {"id": "fourdots", "name": "ארבע נקודות", "main": "#F00202", "vb": "0.00 -0.07 88.00 82.13", "body": "<ellipse cx=\"66\" cy=\"61.5\" rx=\"22\" ry=\"20.5\" fill=\"{c}\"/><ellipse cx=\"66\" cy=\"20.5\" rx=\"22\" ry=\"20.5\" fill=\"{c}\"/><ellipse cx=\"22\" cy=\"20.5\" rx=\"22\" ry=\"20.5\" fill=\"{c}\"/><ellipse cx=\"22\" cy=\"61.5\" rx=\"22\" ry=\"20.5\" fill=\"{c}\"/>", "vb_orig": "0.00 -3.00 88 88"}, {"id": "frame", "name": "ריבוע", "main": "#3E27B3", "vb": "0.00 -0.02 70.00 66.03", "body": "<rect x=\"0\" y=\"0\" width=\"70\" height=\"66\" fill=\"{c}\"/><rect x=\"21.6\" y=\"19.3\" width=\"28.1\" height=\"25.7\" fill=\"#F2F1EE\"/>", "vb_orig": "0.00 -2.00 70 70"}, {"id": "dot", "name": "נקודה", "main": "#D8319A", "vb": "0.00 -0.03 44.00 41.07", "body": "<ellipse cx=\"22\" cy=\"20.5\" rx=\"22\" ry=\"20.5\" fill=\"{c}\"/>", "vb_orig": "0.00 -1.50 44 44"}, {"id": "loops", "name": "לולאות", "main": "#1C1A18", "vb": "0.00 1.82 300.43 266.37", "body": "<path d=\"M0 2H167A133 133 0 0 1 167 268H0V230H167A95 95 0 0 0 167 40H0Z\" fill=\"{c}\" fill-rule=\"evenodd\"/><path d=\"M0 78H155A57 57 0 0 1 155 192H0V152H155A17 17 0 0 0 155 118H0Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "0.00 -17.50 305 305"}, {"id": "stripes", "name": "פסים אדומים", "main": "#F00202", "vb": "11.60 2.00 278.40 261.97", "body": "<path d=\"M12 2h22v262h-22ZM55 2h22v262h-22ZM98 2h22v262h-22ZM141 2h22v262h-22ZM184 2h22v262h-22ZM227 2h22v262h-22ZM270 2h22v262h-22Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "0.00 -12.50 290 290"}, {"id": "ublock", "name": "בלוק U", "main": "#FA4416", "vb": "1.99 1.91 292.04 268.20", "body": "<path d=\"M2 2H98V178H196V2H294V270H2Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "0.00 -12.00 298 298"}, {"id": "dotring", "name": "נקודה בטבעת", "main": "#FA4416", "vb": "26.58 0.82 246.50 246.50", "body": "<path d=\"M28 124a122 122 0 1 0 244 0a122 122 0 1 0 -244 0Z\" fill=\"none\" stroke=\"{c}\" stroke-width=\"2\"/><path d=\"M74 123a78 78 0 1 0 156 0a78 78 0 1 0 -156 0Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "0.00 -19.00 290 290"}, {"id": "bird", "name": "ציפור", "main": "#3E27B3", "vb": "4.90 3.19 285.18 265.09", "body": "<path d=\"M5 5L40 9Q52 15 60 30Q100 0 152 4Q212 8 242 21Q268 24 290 6L195 97L290 140L150 268L102 180L5 262Q30 215 18 175Q2 125 14 95Q22 72 37 58Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "0.00 -12.00 294 294"}, {"id": "fold", "name": "קיפול", "main": "#FA4416", "vb": "7.58 -0.35 293.91 268.66", "body": "<path d=\"M8 0L148 90L110 140L8 268Z\" fill=\"{c}\" fill-rule=\"evenodd\"/><path d=\"M110 140L162 176L301 5L301 268L8 268Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "0.00 -15.50 303 303"}, {"id": "chevron", "name": "חץ סגול", "main": "#5E0160", "vb": "9.82 -0.17 295.53 258.33", "body": "<path d=\"M140 0L285 0L158 122L305 258L160 258L10 122Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "0.00 -26.00 310 310"}, {"id": "arrowbox", "name": "חץ קופסה", "main": "#FA4416", "vb": "4.95 4.86 193.05 175.23", "body": "<path d=\"M102 5L104 90H198L102 180H5V95Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "0.00 -9.00 198 198"}, {"id": "arch", "name": "קשת", "main": "#1C1A18", "vb": "0.00 -0.23 292.00 275.45", "body": "<path d=\"M0 275V150A150 150 0 0 1 150 0H292V275H200V225H100V275ZM112 135A86 47 0 0 1 198 88V135Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "0.00 -8.50 292 292"}, {"id": "jhook", "name": "וו", "main": "#FA4416", "vb": "4.70 -0.31 275.42 255.68", "body": "<path d=\"M168 0H280V175Q280 255 195 255H65L5 158H125Q168 158 168 115Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "0.00 -13.00 282 282"}, {"id": "flower", "name": "פרח", "main": "#FA4416", "vb": "1.02 -1.25 303.98 272.47", "body": "<path d=\"M133.0 141.0L77.4 31.3Q62.0 1.0 96.0 1.0L202.0 1.0Q236.0 1.0 263.8 20.6L286.0 36.2Q300.0 46.0 301.5 63.0L301.5 63.0Q303.0 80.0 286.9 85.8ZM133.0 141.0L271.0 91.5Q303.0 80.0 303.2 114.0L303.8 211.6Q304.0 236.0 287.0 253.5L287.0 253.5Q270.0 271.0 245.6 271.0L234.0 271.0Q200.0 271.0 184.4 240.8ZM133.0 141.0L186.3 244.3Q200.0 271.0 170.0 271.0L50.9 271.0Q30.0 271.0 16.0 255.5L16.0 255.5Q2.0 240.0 2.0 219.1L2.0 216.5Q2.0 193.0 23.8 184.3ZM133.0 141.0L29.9 181.9Q2.0 193.0 1.8 163.0L1.2 63.1Q1.0 40.0 15.5 22.0L19.9 16.5Q30.0 4.0 46.0 2.5L46.0 2.5Q62.0 1.0 69.3 15.3Z\" fill=\"{c}\" fill-rule=\"evenodd\"/><path d=\"M3 192L304 78\" stroke=\"#F2F1EE\" stroke-width=\"4\"/><path d=\"M62 0L200 270\" stroke=\"#F2F1EE\" stroke-width=\"4\"/><path d=\"M174.2 145.9L95.8 130.1\" stroke=\"#F2F1EE\" stroke-width=\"3\"/><path d=\"M147.6 176.0L122.4 100.0\" stroke=\"#F2F1EE\" stroke-width=\"3\"/><path d=\"M108.3 167.8L161.7 108.2\" stroke=\"#F2F1EE\" stroke-width=\"3\"/>", "vb_orig": "0.00 -16.50 305 305"}, {"id": "eye", "name": "עין", "main": "#5E0160", "vb": "2.96 -6.01 292.05 292.05", "body": "<path d=\"M3 140a146 146 0 1 0 292 0a146 146 0 1 0 -292 0Z\" fill=\"{c}\" fill-rule=\"evenodd\"/><path d=\"M4 140a108 108 0 1 0 216 0a108 108 0 1 0 -216 0Z\" fill=\"#F2F1EE\" fill-rule=\"evenodd\"/><path d=\"M59 140a75 75 0 1 0 150 0a75 75 0 1 0 -150 0Z\" fill=\"{c}\" fill-rule=\"evenodd\"/><path d=\"M122 140a44 44 0 1 0 88 0a44 44 0 1 0 -88 0Z\" fill=\"#F2F1EE\" fill-rule=\"evenodd\"/><path d=\"M138 142a22 22 0 1 0 44 0a22 22 0 1 0 -44 0Z\" fill=\"{c}\" fill-rule=\"evenodd\"/><path d=\"M142 138a9 9 0 1 0 18 0a9 9 0 1 0 -18 0Z\" fill=\"#F2F1EE\" fill-rule=\"evenodd\"/>", "vb_orig": "0.00 -7.00 296 296"}, {"id": "stars", "name": "כוכבים", "main": "#3E27B3", "vb": "0.00 4.67 290.00 280.33", "body": "<path d=\"M0 5H290V280H205V100H0Z\" fill=\"{c}\" fill-rule=\"evenodd\"/><path d=\"M55.0 7.0L65.8 40.2L100.7 40.2L72.4 60.7L83.2 93.8L55.0 73.3L26.8 93.8L37.6 60.7L9.3 40.2L44.2 40.2ZM152.0 7.0L162.8 40.2L197.7 40.2L169.4 60.7L180.2 93.8L152.0 73.3L123.8 93.8L134.6 60.7L106.3 40.2L141.2 40.2ZM250.0 7.0L260.8 40.2L295.7 40.2L267.4 60.7L278.2 93.8L250.0 73.3L221.8 93.8L232.6 60.7L204.3 40.2L239.2 40.2ZM250.0 117.0L260.8 150.2L295.7 150.2L267.4 170.7L278.2 203.8L250.0 183.3L221.8 203.8L232.6 170.7L204.3 150.2L239.2 150.2ZM250.0 207.0L260.8 240.2L295.7 240.2L267.4 260.7L278.2 293.8L250.0 273.3L221.8 293.8L232.6 260.7L204.3 240.2L239.2 240.2Z\" fill=\"#F2F1EE\" fill-rule=\"evenodd\"/>", "vb_orig": "0.00 -5.00 290 290"}, {"id": "zig", "name": "זיגזג", "main": "#FA4416", "vb": "0.00 -0.17 290.00 280.33", "body": "<path d=\"M0 0H290V280H0Z\" fill=\"{c}\" fill-rule=\"evenodd\"/><clipPath id=\"zc\"><rect width=\"290\" height=\"280\"/></clipPath><g clip-path=\"url(#zc)\"><path d=\"M335 -10L207 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M315 -10L187 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M295 -10L167 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M275 -10L147 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M255 -10L127 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M235 -10L107 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M-10 6L210 0L87 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M-10 25L182 20L67 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M-10 45L154 40L47 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M-10 64L126 60L28 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M-10 83L98 80L8 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M-10 102L70 100L-12 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M-10 121L42 120L-32 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M-10 140L14 140L-52 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M-10 160L-14 160L-71 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M-10 179L-42 180L-91 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M-10 198L-70 200L-111 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M-10 217L-98 220L-131 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M-10 236L-126 240L-151 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/><path d=\"M-10 255L-154 260L-170 300\" fill=\"none\" stroke=\"#F2F1EE\" stroke-width=\"9\"/></g>", "vb_orig": "0.00 -5.00 290 290"}, {"id": "cring", "name": "סי כפול", "main": "#0270B6", "vb": "0.00 0.00 96.83 100.00", "body": "<path d=\"M91 30A46 46 0 1 0 91 70\" fill=\"none\" stroke=\"{c}\" stroke-width=\"13\"/><path d=\"M73 36A25 25 0 1 0 73 64\" fill=\"none\" stroke=\"{c}\" stroke-width=\"13\"/>", "vb_orig": "0.00 0.00 100 100"}, {"id": "band", "name": "פס שבור", "main": "#F00202", "vb": "-0.25 0.00 178.28 182.08", "body": "<path d=\"M0 42L178 0V140L0 182V146L118 118V48L0 78Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "-5.00 0.00 190 190"}, {"id": "bite", "name": "נגיסות", "main": "#1C1A18", "vb": "11.85 9.89 186.19 246.39", "body": "<path d=\"M12 10H100V134A54 54 0 0 0 100 242V256H12Z\" fill=\"{c}\" fill-rule=\"evenodd\"/><path d=\"M110 10H198V136A54 54 0 0 0 198 244V256H110Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "-29.00 0.00 258 258"}, {"id": "prism", "name": "מנסרה", "main": "#1C1A18", "vb": "9.75 60.02 80.50 162.15", "body": "<path d=\"M10 60L90 95V185L10 222Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "-65 -4 230 230"}, {"id": "tri", "name": "משולש", "main": "#1C1A18", "vb": "-0.08 0.00 88.17 92.00", "body": "<path d=\"M0 0L88 46L0 92Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "-1.00 0.00 92 92"}, {"id": "ceiling", "name": "מקבילית", "main": "#0270B6", "vb": "0.00 -0.13 160.00 80.27", "body": "<path d=\"M0 80L40 0L160 0L120 80Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "0.00 -30.00 160 160"}, {"id": "vchev", "name": "שברונים", "main": "#1C1A18", "vb": "0.00 0.00 84.00 140.00", "body": "<path d=\"M0 0L42 36L84 0L84 20L42 56L0 20ZM0 42L42 78L84 42L84 62L42 98L0 62ZM0 84L42 120L84 84L84 104L42 140L0 104Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "-28.00 0.00 140 140"}, {"id": "knot", "name": "קשר", "main": "#1C1A18", "vb": "21.93 1.87 262.14 270.30", "body": "<path d=\"M42 120V66A44 44 0 0 1 130 66V120\" fill=\"none\" stroke=\"{c}\" stroke-width=\"40\"/><path d=\"M168 120V78A48 48 0 0 1 264 78V120\" fill=\"none\" stroke=\"{c}\" stroke-width=\"40\"/><path d=\"M42 120A111 100 0 0 0 264 120\" fill=\"none\" stroke=\"{c}\" stroke-width=\"40\"/><path d=\"M132 215H172V272H132Z\" fill=\"{c}\"/><path d=\"M85 140A65 68 0 1 0 215 140A65 68 0 1 0 85 140ZM124 133A26 30 0 0 1 176 133ZM128 160H172V202H128Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "0.00 -17.00 306 306"}, {"id": "star", "name": "כוכב", "main": "#3E27B3", "vb": "4.33 5.00 91.33 86.83", "body": "<path d=\"M50.0 5.0L60.8 38.2L95.7 38.2L67.4 58.7L78.2 91.8L50.0 71.3L21.8 91.8L32.6 58.7L4.3 38.2L39.2 38.2Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "0.00 0.00 100 100"}, {"id": "dome", "name": "כיפה מפוספסת", "main": "#FA4416", "vb": "2.00 2.00 194.33 98.00", "body": "<mask id=\"dm\"><path d=\"M2 100A98 98 0 0 1 198 100Z\" fill=\"#fff\"/></mask><g mask=\"url(#dm)\"><path d=\"M-40 100L40 0L58 0L-22 100Z\" fill=\"{c}\"/><path d=\"M-6 100L74 0L92 0L12 100Z\" fill=\"{c}\"/><path d=\"M28 100L108 0L126 0L46 100Z\" fill=\"{c}\"/><path d=\"M62 100L142 0L160 0L80 100Z\" fill=\"{c}\"/><path d=\"M96 100L176 0L194 0L114 100Z\" fill=\"{c}\"/><path d=\"M130 100L210 0L228 0L148 100Z\" fill=\"{c}\"/><path d=\"M164 100L244 0L262 0L182 100Z\" fill=\"{c}\"/><path d=\"M198 100L278 0L296 0L216 100Z\" fill=\"{c}\"/></g>", "vb_orig": "0.00 -50.00 200 200"}, {"id": "sail", "name": "מפרש", "main": "#1C1A18", "vb": "0.00 -0.70 590.00 266.48", "body": "<path d=\"M0 265L105 0H285L590 218V265H452L440 252H150L142 265ZM190 128H262L198 86Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "0 -160 590 590"}, {"id": "fblock", "name": "F", "main": "#F00202", "vb": "0.00 -0.33 290.00 270.67", "body": "<path d=\"M0 0H290V88H100V102H285L192 186H100V270H0Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "0 -10 290 290"}, {"id": "roundu", "name": "U מעוגל", "main": "#5E0160", "vb": "101.93 91.89 74.15 110.10", "body": "<path d=\"M102 92H126V165A13 13 0 0 0 152 165V92H176V165A37 37 0 0 1 102 165Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "72 70 134 134"}, {"id": "boot", "name": "מגף", "main": "#F00202", "vb": "18.00 0.00 144.00 116.00", "body": "<path d=\"M98 0H158V64Q158 96 162 116H141Q140 92 128 92Q115 92 113 116H18Q18 102 38 98L84 92Q98 86 98 64Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "10 -20 160 160"}, {"id": "qmark", "name": "סימן שאלה", "main": "#1C1A18", "vb": "-1.58 -2.00 57.02 106.15", "body": "<path d=\"M6 24A21 21 0 1 1 30 47Q19 51 19 61V72\" fill=\"none\" stroke=\"{c}\" stroke-width=\"15\"/><path d=\"M11 84H27V104H11Z\" fill=\"{c}\"/>", "vb_orig": "-30 -2 110 110"}, {"id": "pills", "name": "גלולות", "main": "#1C1A18", "vb": "190.00 10.00 42.00 270.20", "body": "<path d=\"M190 10H232V120A21 21 0 0 1 190 120ZM190 140A21 21 0 0 1 232 140V180A21 21 0 0 1 190 180ZM190 200A21 21 0 0 1 232 200V280H190Z\" fill=\"{c}\" fill-rule=\"evenodd\"/>", "vb_orig": "71.0 3.0 280.0 280.0"}];const GLY={"F": "M1.8 102.6L2.6 103.1L31.1 103.1L31.8 102.8L31.9 102.4L31.9 70.2L32.1 69.6L32.5 69.2L33.0 69.1L33.2 69.2L102.1 69.2L102.6 69.0L102.9 68.5L102.9 39.5L102.8 39.1L102.0 38.8L2.8 38.8L2.0 39.0L1.6 39.6L1.6 102.2ZM1.6 2.6L1.6 34.5L1.9 35.1L2.4 35.5L2.9 35.6L3.4 35.5L101.4 35.5L102.0 35.6L102.4 35.5L102.8 35.1L102.9 34.8L102.9 2.5L102.5 2.0L102.1 1.9L2.6 1.9L2.1 2.0Z", "O": "M46.6 2.0L46.5 2.1L43.9 2.4L42.2 2.9L40.5 3.0L37.9 3.9L36.4 4.1L34.8 4.9L33.1 5.2L32.1 5.9L31.1 6.1L29.5 7.0L28.6 7.2L28.0 7.8L26.9 8.2L26.1 8.9L25.4 9.1L24.5 9.9L23.9 10.1L21.0 12.1L17.6 15.0L14.0 18.6L12.2 20.6L11.8 21.5L11.0 22.2L8.1 26.5L7.6 27.9L6.1 30.2L5.8 31.6L4.9 33.0L4.6 34.2L4.0 35.4L3.8 36.8L3.0 38.5L2.8 40.1L2.0 42.5L1.8 45.2L1.2 47.8L1.2 49.2L1.1 49.4L1.1 50.5L1.0 50.6L1.0 53.2L1.1 53.4L1.2 57.1L1.8 59.2L1.8 60.6L1.9 60.8L2.0 62.4L2.4 63.8L2.6 64.1L3.0 66.4L3.6 67.8L4.1 69.8L4.8 71.0L4.9 71.6L5.6 73.0L6.1 74.6L6.8 75.5L7.0 76.2L7.8 77.2L8.1 78.1L8.6 78.8L9.0 79.6L12.9 84.9L19.5 91.5L20.2 91.9L20.9 92.5L25.4 95.6L26.6 96.1L27.1 96.6L28.0 97.0L28.6 97.5L30.0 98.0L31.4 98.8L32.5 99.0L33.5 99.6L35.1 100.0L36.4 100.6L38.2 101.0L40.4 101.8L41.9 101.9L46.4 102.8L48.2 102.8L48.4 102.9L56.8 102.8L60.5 102.0L62.8 101.8L65.0 101.0L66.6 100.8L67.2 100.4L70.1 99.5L76.1 96.6L76.8 96.1L78.1 95.5L80.1 94.0L81.1 93.5L83.8 91.5L84.1 91.0L86.6 88.9L88.5 87.0L88.9 86.4L91.2 83.9L92.9 81.4L93.8 80.4L94.0 79.8L96.5 75.9L96.6 75.4L97.6 73.6L98.0 72.2L98.6 71.1L98.9 70.0L99.6 68.4L99.9 67.0L100.6 65.1L101.0 62.6L101.8 59.6L101.8 57.8L101.9 57.6L102.0 54.6L102.1 54.5L102.1 50.1L102.0 50.0L102.0 48.4L101.9 48.2L101.9 47.0L101.8 46.9L101.8 45.1L101.6 45.0L101.6 44.1L101.4 43.5L101.4 43.0L100.9 41.6L100.6 39.5L99.9 37.8L99.5 36.0L98.9 34.8L98.5 33.2L97.9 32.2L97.6 31.2L96.9 30.1L96.6 29.2L96.0 28.4L95.5 27.2L91.6 21.4L89.9 19.5L88.9 18.1L85.9 15.1L84.5 14.1L82.5 12.2L80.2 10.9L79.8 10.4L78.6 9.8L77.9 9.1L76.9 8.8L74.2 7.1L73.4 6.9L72.1 6.1L71.1 5.9L70.1 5.2L68.9 5.0L67.2 4.2L65.4 3.9L63.9 3.2L60.2 2.8L58.8 2.2L56.8 2.1L56.6 2.0L54.1 2.0L54.0 1.9ZM50.0 33.4L53.0 33.4L53.1 33.5L56.9 34.0L58.5 34.8L59.8 35.1L60.4 35.6L61.6 36.1L63.5 37.5L65.8 39.6L67.9 42.4L68.0 42.9L68.8 44.0L69.0 44.9L69.5 45.6L70.6 50.1L70.6 54.8L70.0 56.9L69.8 58.5L69.0 59.9L68.9 60.5L68.4 61.5L66.8 64.0L63.2 67.5L62.1 68.1L61.4 68.8L60.1 69.2L59.2 69.9L57.5 70.4L56.4 70.9L54.1 71.1L53.2 71.4L50.2 71.4L48.5 71.0L46.9 70.9L45.1 70.1L44.1 69.9L43.1 69.2L41.9 68.8L39.4 67.0L37.0 64.6L35.2 62.0L34.6 60.5L33.9 59.2L33.6 58.1L33.1 57.0L32.8 55.1L32.6 51.4L32.8 51.2L32.8 49.4L33.0 48.1L33.5 47.1L33.9 45.2L34.5 44.4L35.0 43.0L36.8 40.5L39.9 37.4L43.4 35.2L46.4 34.0L48.6 33.8Z", "R": "M1.4 2.0L1.0 2.5L1.1 3.0L1.8 3.8L2.4 5.1L4.8 9.0L5.2 10.1L5.9 11.0L6.1 11.8L6.9 12.8L10.0 18.5L10.5 19.0L11.4 19.2L71.0 19.2L73.1 20.1L74.1 21.1L74.6 22.1L74.6 23.2L74.0 24.5L72.6 25.8L72.1 26.0L70.4 26.4L14.8 26.4L14.5 26.5L14.4 27.1L15.2 28.9L16.5 30.9L17.1 32.4L18.8 34.8L19.2 36.1L20.8 38.4L21.2 39.6L21.9 40.5L22.2 41.4L22.9 42.1L24.1 44.8L25.5 46.9L26.1 48.4L26.8 49.1L27.2 50.2L27.8 50.9L28.2 52.1L29.8 54.4L30.2 55.6L32.9 60.0L33.4 61.2L34.5 62.9L35.1 64.4L35.8 65.1L36.2 66.2L36.8 66.9L37.2 68.1L38.9 70.6L39.0 71.1L39.9 72.5L40.1 73.2L40.9 74.2L41.2 75.1L41.9 76.0L42.4 77.2L42.8 77.6L43.1 78.5L43.6 79.1L44.1 80.4L45.8 82.9L46.2 84.1L46.8 84.8L47.4 86.1L48.9 88.5L49.1 89.2L50.9 92.0L51.4 93.2L51.8 93.6L52.2 94.8L52.8 95.4L53.2 96.6L54.8 98.9L55.1 99.9L55.8 100.8L56.4 102.1L57.1 102.9L57.8 103.1L92.2 103.1L92.6 103.0L93.0 102.6L93.0 102.1L92.8 101.6L92.1 100.9L91.6 99.8L91.0 98.9L90.6 97.9L89.2 95.8L88.6 94.2L87.1 92.0L86.6 90.8L86.1 90.1L85.6 89.0L84.4 87.0L83.8 85.5L83.1 84.8L82.6 83.6L82.1 83.0L81.6 81.8L80.0 79.2L79.9 78.8L79.0 77.4L78.8 76.6L77.0 73.9L76.6 72.9L75.1 70.5L74.6 69.2L72.0 64.9L71.6 63.9L70.2 61.8L69.8 60.5L68.1 58.0L67.6 56.8L66.1 54.4L64.8 51.8L64.8 51.5L64.1 50.8L63.6 49.6L63.1 49.0L62.6 47.8L62.1 47.1L61.5 45.9L61.0 45.4L60.8 44.8L60.9 44.2L61.2 43.9L61.9 43.8L80.2 43.8L82.1 42.8L84.8 40.8L87.8 37.9L88.1 37.2L89.8 35.5L91.8 32.1L92.0 31.2L92.8 30.0L92.9 29.2L93.5 27.8L94.0 25.2L94.1 21.0L94.0 20.9L93.9 18.4L92.9 15.6L92.9 15.2L91.9 13.4L91.9 13.1L91.1 12.1L90.8 11.2L89.4 9.4L87.1 7.0L84.9 5.0L81.0 2.2L79.8 1.9L1.6 1.9Z"};const DIG={"1": [15, "<path d=\"M15 66V0H0V66H15Z\"/>"], "2": [42, "<path d=\"M42 24.1002C37.5789 -13.2997 2.21053 -2.29977 0 24.1002L15.4737 24.2C17.6842 17.6 26.5263 17.6 26.5263 24.2C26.5263 33 9.57895 43.9003 0 50.5003V66L42 65.9002V50.5003H22.1053C30.9474 46.2 42 35.2 42 24.1002Z\"/>"], "3": [40, "<path d=\"M32.1337 28.1842C34.6055 -4.22116 2.47183 0.0995556 0 0.291092V13.2532C9.8873 13.2532 19.7746 15.222 17.3028 26.0238L0 26.0741V39.1774C19.7746 38.9859 24.7183 41.1463 24.7183 45.467C24.7183 49.7877 19.7746 51.9481 0 51.9481V65.1017C53.6151 72.4054 40.7475 32.9116 32.1337 28.1842Z\"/>"], "4": [53, "<path d=\"M0.10215 50.4644C-1.5932 14.1482 18.2514 5.29611 27.2933 0H52.7237L52.7237 65.8231H35.7701L35.7046 50.4644H0.10215Z\"/><path d=\"M35.171 35.1057V19.7469C24.2005 19.7469 17.6182 30.8379 17.6182 35.1057H35.171Z\" fill=\"#F2F1EE\"/>"], "5": [53, "<path d=\"M36.164 22.5176H14.0672V14.1828H45.9436V0H0V37.0118H7.67909L28.4413 37.4C39.3803 37.4 41.5681 50.6 28.4413 51.5059H0V66H36.164C65.6338 52.8 50.3192 26.4 36.164 22.5176Z\"/>"], "6": [49, "<circle cx=\"24.1351\" cy=\"41.688\" r=\"24.1351\"/><circle cx=\"24.1352\" cy=\"41.688\" r=\"9.05068\" fill=\"#F2F1EE\"/><path d=\"M0 43.8821V0H15.3587V19.7469L0 43.8821Z\"/>"], "7": [48, "<path d=\"M48 0H0V16.5H32.7273V66H48V0Z\"/>"], "8": [40, "<circle cx=\"19.747\" cy=\"46.0762\" r=\"19.7469\"/><circle cx=\"19.747\" cy=\"19.7469\" r=\"19.7469\"/><circle cx=\"19.747\" cy=\"19.7469\" r=\"7.4051\" fill=\"#F2F1EE\"/><circle cx=\"19.747\" cy=\"46.0762\" r=\"7.4051\" fill=\"#F2F1EE\"/>"], "9": [49, "<circle cx=\"24.1351\" cy=\"24.1352\" r=\"24.1351\"/><circle cx=\"24.1351\" cy=\"24.1352\" r=\"9.05068\" fill=\"#F2F1EE\"/><path d=\"M48.2703 21.941V65.8231H32.9115V46.0762L48.2703 21.941Z\"/>"], "0": [53, "<ellipse cx=\"26.33\" cy=\"32.91\" rx=\"26.33\" ry=\"32.91\"/><ellipse cx=\"26.33\" cy=\"32.91\" rx=\"9.87\" ry=\"12.34\" fill=\"#F2F1EE\"/>"], "\u2013": [22, "<rect x=\"2\" y=\"29\" width=\"18\" height=\"10\"/>"], ":": [10, "<rect x=\"0\" y=\"16\" width=\"10\" height=\"10\"/><rect x=\"0\" y=\"41\" width=\"10\" height=\"10\"/>"]};const PIECES=[{"f": "pieces/p00.png", "r": 0, "c": 0, "x": 16.716, "y": 16.373, "w": 14.667, "h": 8.375}, {"f": "pieces/p01.png", "r": 0, "c": 1, "x": 33.878, "y": 16.394, "w": 12.292, "h": 9.047}, {"f": "pieces/p02.png", "r": 0, "c": 2, "x": 46.764, "y": 16.373, "w": 9.531, "h": 9.089}, {"f": "pieces/p03.png", "r": 0, "c": 3, "x": 58.373, "y": 16.373, "w": 11.49, "h": 9.11}, {"f": "pieces/p04.png", "r": 0, "c": 4, "x": 69.834, "y": 16.352, "w": 13.569, "h": 8.942}, {"f": "pieces/p05.png", "r": 1, "c": 0, "x": 16.686, "y": 24.748, "w": 14.133, "h": 9.467}, {"f": "pieces/p06.png", "r": 1, "c": 1, "x": 33.046, "y": 25.462, "w": 8.878, "h": 9.299}, {"f": "pieces/p07.png", "r": 1, "c": 2, "x": 41.924, "y": 16.373, "w": 15.439, "h": 18.64}, {"f": "pieces/p08.png", "r": 1, "c": 3, "x": 55.701, "y": 25.462, "w": 14.281, "h": 9.467}, {"f": "pieces/p09.png", "r": 1, "c": 4, "x": 69.863, "y": 25.693, "w": 13.361, "h": 8.459}, {"f": "pieces/p10.png", "r": 2, "c": 0, "x": 16.746, "y": 34.971, "w": 14.311, "h": 9.383}, {"f": "pieces/p11.png", "r": 2, "c": 1, "x": 30.879, "y": 34.761, "w": 13.242, "h": 9.74}, {"f": "pieces/p12.png", "r": 2, "c": 2, "x": 45.042, "y": 34.95, "w": 9.976, "h": 9.32}, {"f": "pieces/p13.png", "r": 2, "c": 3, "x": 55.018, "y": 34.929, "w": 14.905, "h": 9.404}, {"f": "pieces/p14.png", "r": 2, "c": 4, "x": 69.715, "y": 34.383, "w": 13.539, "h": 9.152}, {"f": "pieces/p15.png", "r": 3, "c": 0, "x": 16.746, "y": 44.228, "w": 13.331, "h": 8.774}, {"f": "pieces/p16.png", "r": 3, "c": 1, "x": 29.958, "y": 44.458, "w": 13.599, "h": 8.648}, {"f": "pieces/p17.png", "r": 3, "c": 2, "x": 36.164, "y": 44.123, "w": 22.447, "h": 9.656}, {"f": "pieces/p18.png", "r": 3, "c": 3, "x": 58.581, "y": 44.27, "w": 8.581, "h": 9.215}, {"f": "pieces/p19.png", "r": 3, "c": 4, "x": 69.329, "y": 43.871, "w": 13.242, "h": 9.824}, {"f": "pieces/p20.png", "r": 4, "c": 0, "x": 16.627, "y": 52.897, "w": 14.222, "h": 10.516}, {"f": "pieces/p21.png", "r": 4, "c": 1, "x": 28.622, "y": 53.107, "w": 15.291, "h": 10.243}, {"f": "pieces/p22.png", "r": 4, "c": 2, "x": 43.587, "y": 53.778, "w": 14.994, "h": 9.047}, {"f": "pieces/p23.png", "r": 4, "c": 3, "x": 56.977, "y": 53.484, "w": 13.183, "h": 9.656}, {"f": "pieces/p24.png", "r": 4, "c": 4, "x": 68.765, "y": 54.891, "w": 14.46, "h": 6.927}, {"f": "pieces/p25.png", "r": 5, "c": 0, "x": 16.746, "y": 63.686, "w": 13.895, "h": 9.404}, {"f": "pieces/p26.png", "r": 5, "c": 1, "x": 30.641, "y": 63.308, "w": 11.758, "h": 9.194}, {"f": "pieces/p27.png", "r": 5, "c": 2, "x": 43.409, "y": 62.825, "w": 13.331, "h": 9.677}, {"f": "pieces/p28.png", "r": 5, "c": 3, "x": 56.651, "y": 63.119, "w": 13.569, "h": 9.11}, {"f": "pieces/p29.png", "r": 5, "c": 4, "x": 70.22, "y": 64.757, "w": 13.034, "h": 7.473}, {"f": "pieces/p30.png", "r": 6, "c": 0, "x": 18.646, "y": 72.817, "w": 9.739, "h": 10.223}, {"f": "pieces/p31.png", "r": 6, "c": 1, "x": 29.335, "y": 72.481, "w": 14.044, "h": 9.362}, {"f": "pieces/p32.png", "r": 6, "c": 2, "x": 43.349, "y": 71.935, "w": 17.013, "h": 6.024}, {"f": "pieces/p33.png", "r": 6, "c": 3, "x": 59.234, "y": 72.208, "w": 7.304, "h": 10.411}, {"f": "pieces/p34.png", "r": 6, "c": 4, "x": 68.052, "y": 72.229, "w": 15.202, "h": 10.16}, {"f": "pieces/p35.png", "r": 7, "c": 0, "x": 16.746, "y": 81.927, "w": 13.242, "h": 8.564}, {"f": "pieces/p36.png", "r": 7, "c": 1, "x": 29.958, "y": 81.822, "w": 13.302, "h": 8.711}, {"f": "pieces/p37.png", "r": 7, "c": 2, "x": 43.29, "y": 80.772, "w": 12.975, "h": 9.761}, {"f": "pieces/p38.png", "r": 7, "c": 3, "x": 56.235, "y": 82.557, "w": 14.014, "h": 7.997}, {"f": "pieces/p39.png", "r": 7, "c": 4, "x": 69.774, "y": 82.116, "w": 13.45, "h": 8.522}];
+const PAL=['#FA4416','#F00202','#D8319A','#5E0160','#3E27B3','#0270B6','#188C5B','#EBB61D','#1C1A18'];
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const svg=(s,c)=>`<svg viewBox="${s.vb}" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${s.body.replaceAll('{c}',c||s.main)}</svg>`;
+function num(str,color='#1C1A18'){let x=0,p='';for(const ch of String(str)){const d=DIG[ch];if(!d)continue;p+=`<g transform="translate(${x} 0)" fill="${color}">${d[1].replaceAll('#F2F1EE',color==='#1C1A18'?'#F2F1EE':'#1C1A18')}</g>`;x+=d[0]+7}return `<svg viewBox="0 0 ${Math.max(1,x-7)} 66" aria-label="${str}">${p}</svg>`}
+const LOGO=(c='#1C1A18')=>`<svg viewBox="0 0 440 105" aria-label="FORM">${[['F',0],['O',118.5],['R',216.4]].map(([l,x])=>`<path transform="translate(${x} 0)" d="${GLY[l]}" fill="${c}" fill-rule="evenodd"/>`).join('')}<g transform="translate(328.1 0)"><rect x="1.5" y="2" width="32.75" height="101" fill="${c}"/><rect x="38.5" y="2" width="33.75" height="101" fill="#FA4416"/><rect x="75.75" y="2" width="33.5" height="101" fill="${c}"/></g></svg>`;
+$('#navlogo').innerHTML=LOGO();$('#footlogo').innerHTML=LOGO('#F2F1EE');
+$('#priceNum').innerHTML=num(100,'#F2F1EE');
+// moving strips: every shape, cycling through all colours
+function strip(el,off){const row=SHAPES.map((s,i)=>svg(s,PAL[(i*4+off)%PAL.length])).join('');el.innerHTML=`<div class="in"><div class="row">${row}</div><div class="row">${row}</div></div>`;}
+strip($('#s1'),0);strip($('#s2'),3);
+// ---- poster that fills
+const TASKS=['ריצה בבוקר','קפה עם נועה','הגשה בטיפוגרפיה','יוגה','סטודיו','לקרוא פרק','שיעור מוזיקה','יום בים','מכולת','טלפון לסבתא','סקיצות','פגישת צוות','לבשל','כביסה','לצייר','ארוחה עם המשפחה','תערוכה','דד־ליין','ספרייה','הליכה','שיחה עם מרצה','קולנוע','לנקות את החדר','חוג קרמיקה','יום הולדת לטל','פרזנטציה','מספרה','פיקניק','לסדר תיקיות','שבת בצפון','סיכום חודש'];
+const P=$('#poster');
+P.innerHTML='<img class="txt" src="img/poster_b_text.png" alt="">'+PIECES.map((p,i)=>`<img class="pz" data-i="${i}" src="img/${p.f.replace('pieces/','pieces/')}" style="left:${p.x}%;top:${p.y}%;width:${p.w}%;height:${p.h}%" alt="">`).join('');
+const ord=PIECES.map((p,i)=>i).sort((a,b)=>PIECES[a].r-PIECES[b].r||PIECES[b].c-PIECES[a].c);
+const pz=$$('#poster .pz');let timer=null;
+function fill(){clearTimeout(timer);pz.forEach(e=>e.classList.remove('on','hl'));$('#replay').classList.remove('on');let k=0;
+ const step=()=>{if(k>=ord.length){$('#tN').innerHTML=num(31);$('#tT').textContent='הפוסטר מוכן';$('#tPc').innerHTML='';$('#replay').classList.add('on');return;}
+  const i=ord[k];const day=Math.floor(k*31/ord.length)+1;const e=pz[i];e.classList.add('on','hl');
+  $('#tN').innerHTML=num(day);$('#tT').textContent=TASKS[day-1];$('#tPc').innerHTML=`<img src="${e.getAttribute('src')}" alt="">`;
+  k++;timer=setTimeout(step,k<4?520:260);};
+ timer=setTimeout(step,700);}
+$('#tN').innerHTML=num(1);$('#tT').textContent='';
+addEventListener('load',fill);$('#replay').onclick=fill;
+// teaser sound
+(()=>{const b=$('.snd'),v=$('.tz video'),lab=b.querySelector('span');v.play&&v.play().catch(()=>{});
+ b.onclick=()=>{if(v.muted){v.muted=false;v.currentTime=0;v.play();b.classList.add('on');lab.textContent='בלי סאונד';}else{v.muted=true;b.classList.remove('on');lab.textContent='עם סאונד';}};})();
+// reveal
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});$$('.reveal').forEach(e=>io.observe(e));
+// app modal
+const M=$('#modal');$('#appTab').href=APP;
+const fit=()=>{const k=Math.min(1,(innerHeight*0.9-24)/844);M.style.setProperty('--k',k.toFixed(4));};fit();addEventListener('resize',fit);
+const openApp=()=>{if(!$('#appf').src)$('#appf').src=APP;M.classList.add('on');M.setAttribute('aria-hidden','false');};
+const closeApp=()=>{M.classList.remove('on');M.setAttribute('aria-hidden','true');};
+$$('[data-app]').forEach(b=>b.onclick=openApp);$('#mx').onclick=closeApp;M.onclick=e=>{if(e.target===M)closeApp()};addEventListener('keydown',e=>{if(e.key==='Escape')closeApp()});
+// signup
+const addon=$('#addon');const upd=()=>{const on=addon.classList.contains('on');addon.setAttribute('aria-checked',on);$('#total').textContent=(on?120:100)+' ₪';$('#wall').classList.toggle('rods-on',on);};
+addon.onclick=()=>{addon.classList.toggle('on');upd()};addon.onkeydown=e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault();addon.click()}};
+$('#form').onsubmit=e=>{e.preventDefault();const f=e.target;if(!f.name.value.trim()||!/^\S+@\S+\.\S+$/.test(f.email.value)){(!f.name.value.trim()?f.name:f.email).focus();f.animate([{transform:'translateX(0)'},{transform:'translateX(-8px)'},{transform:'translateX(8px)'},{transform:'none'}],{duration:300});return;}
+ const rods=addon.classList.contains('on');const nm=f.name.value.trim().split(' ')[0].replace(/[<>&]/g,'');
+ f.innerHTML=`<div class="done"><span class="logo">${LOGO()}</span><b>ברוכה הבאה ל־FORM Club, ${nm}</b><span>הפוסטר של דצמבר יודפס ב־1 בינואר ויישלח אלייך${rods?', יחד עם מוטות התלייה':''}.</span><div style="margin-top:24px"><button type="button" class="btn" data-app2>בינתיים, לאפליקציה</button></div></div>`;
+ f.querySelector('[data-app2]').onclick=openApp;};
+</script>
+</body>
+</html>
