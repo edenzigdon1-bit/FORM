@@ -351,6 +351,9 @@ function hint(){const standalone=matchMedia('(display-mode: standalone)').matche
  $('#toastTxt').textContent=ios?'כדי שזו תהיה אפליקציה בטלפון: לחצי על כפתור השיתוף בספארי ואז "הוספה למסך הבית".':'כדי להתקין: בתפריט הדפדפן בחרי "התקנת אפליקציה" או "הוספה למסך הבית".';
  setTimeout(()=>{if(!$('#ov').classList.contains('on'))$('#toast').classList.add('on')},5600);$('#toastX').onclick=()=>{$('#toast').classList.remove('on');try{localStorage.setItem('form.hint','1')}catch(e){}};}
 // ---------- boot ----------
+// one-time clean start for the submission on Monday 23.11.2026
+try{const d=new Date();const ymd=d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate();
+ if(ymd>=20261123&&!localStorage.getItem('form.cleanstart.2311')){localStorage.removeItem('form.tasks.v2');localStorage.removeItem('form.level');localStorage.setItem('form.cleanstart.2311','1');tasks=[];}}catch(e){}
 if(new URLSearchParams(location.search).has('reset')){try{localStorage.removeItem('form.tasks.v2');localStorage.removeItem('form.level');}catch(e){}tasks=[];history.replaceState(null,'',location.pathname);}
 let startLv=1;try{const s=localStorage.getItem('form.level');if(s!==null)startLv=+s}catch(e){}
 try{show(tasks.length?startLv:1,{date:todayISO(),id:null},0);}catch(e){window.__killSplash();throw e;}
