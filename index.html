@@ -264,7 +264,9 @@ function show(lv,anchor,dir,fromScale){const old=view;const oldLv=level;const nv
 function zoom(dir,anchor,fromScale){if(busy)return;const nl=level+(dir>0?-1:1);if(nl<0||nl>3||!tasks.length){if(view){view.animate([{transform:`scale(${fromScale||1})`},{transform:`scale(${dir>0?1.04:.96})`},{transform:'scale(1)'}],{duration:300,easing:'ease-out'});view.style.transform='';view.style.opacity='';}return;}show(nl,anchor||current,dir,fromScale);}
 stage.addEventListener('click',e=>{if(pinch.moved)return;const ed=e.target.closest('[data-edit]');if(ed){openEdit(ed.dataset.edit);return;}
  if(e.target.closest('[data-add]')){openAdd();return;}
- const t=e.target.closest('.tile');if(t)zoom(1,{date:t.dataset.date,id:t.dataset.id});});
+ const t=e.target.closest('.tile');if(!t||busy)return;const an={date:t.dataset.date,id:t.dataset.id};
+ // day and week: a tap on a shape opens that task directly; month: one level in
+ if(level===1||level===2)show(0,an,1);else zoom(1,an);});
 $('#plus').addEventListener('click',()=>openAdd());
 // pinch
 const pinch={d0:0,r:1,moved:false,mid:null};
