@@ -315,12 +315,12 @@ function wire(){$('#cl').onclick=closeOv;const bk=$('#bk');if(bk)bk.onclick=()=>
  const nt=$('#nt');if(nt)nt.onclick=()=>{draft.notime=!draft.notime;drawStep();};
  ovin.querySelectorAll('[data-r]').forEach(b=>b.onclick=()=>{draft.repeat=b.dataset.r;ovin.querySelectorAll('[data-r]').forEach(x=>x.classList.toggle('on',x===b));});
  ovin.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>{step=+b.dataset.go;drawStep();});
- const del=$('#del');if(del)del.onclick=()=>{if(del.dataset.sure){tasks=tasks.filter(t=>t.id!==draft.id);save();closeOv();show(tasks.length?level:1,{date:draft.date},0);}else{del.dataset.sure=1;del.textContent=draft.repeat&&draft.repeat!=='none'?'זו משימה חוזרת. לחצי שוב כדי למחוק את כולה':'בטוחה? לחצי שוב למחיקה';}};
+ const del=$('#del');if(del)del.onclick=()=>{if(del.dataset.sure){tasks=tasks.filter(t=>t.id!==draft.id);save();share({o:'del',id:draft.id});closeOv();show(tasks.length?level:1,{date:draft.date},0);}else{del.dataset.sure=1;del.textContent=draft.repeat&&draft.repeat!=='none'?'זו משימה חוזרת. לחצי שוב כדי למחוק את כולה':'בטוחה? לחצי שוב למחיקה';}};
  const nx=$('#nx');if(nx)nx.onclick=next;}
 function next(){if(mode==='edit'){if(step===9){commit();return;}step=9;drawStep();return;}
  if(step<STEPS-1){step++;if(step===2&&!draft.color)draft.color=SH[draft.shape].main;drawStep();return;}commit();}
 function commit(){const t={id:draft.id||uid(),title:draft.title.trim()||'משימה',shape:draft.shape,color:draft.color||SH[draft.shape].main,date:draft.date,time:draft.notime?null:draft.time,repeat:draft.repeat||'none',created:draft.created||Date.now()};
- const i=tasks.findIndex(x=>x.id===t.id);if(i>=0)tasks[i]=t;else tasks.push(t);save();const wasAdd=mode==='add';closeOv();
+ const i=tasks.findIndex(x=>x.id===t.id);if(i>=0)tasks[i]=t;else tasks.push(t);save();share({o:'put',t});const wasAdd=mode==='add';closeOv();
  show(0,{date:t.date,id:t.id},0);const el=view.querySelector(`.page[data-id="${t.id}"][data-date="${t.date}"] .big>div`);
  if(el&&wasAdd)el.animate([{transform:'translateY(-40px) scale(.6)',opacity:0},{transform:'translateY(6px) scale(1.03)',opacity:1,offset:.7},{transform:'none',opacity:1}],{duration:620,easing:'cubic-bezier(.2,.8,.2,1)'});}
 // ---------- splash: one task → zoom out to many → logo ----------
@@ -358,6 +358,24 @@ try{const d=new Date();const ymd=d.getFullYear()*10000+(d.getMonth()+1)*100+d.ge
  if(!localStorage.getItem('form.cleanstart.2211')){localStorage.removeItem('form.tasks.v2');localStorage.removeItem('form.level');localStorage.setItem('form.cleanstart.2211','1');tasks=[];}
  if(ymd>=20261123&&!localStorage.getItem('form.cleanstart.2311')){localStorage.removeItem('form.tasks.v2');localStorage.removeItem('form.level');localStorage.setItem('form.cleanstart.2311','1');tasks=[];}}catch(e){}
 if(new URLSearchParams(location.search).has('reset')){try{localStorage.removeItem('form.tasks.v2');localStorage.removeItem('form.level');}catch(e){}tasks=[];history.replaceState(null,'',location.pathname);}
+
+// ---------- shared journal: every task anyone adds appears for everyone ----------
+const HUB='https://ntfy.sh/form-hit-ez-yoman-7k3q2';
+const seenMsg=new Set();let lastMsg='all',rrT=null;
+function share(op){try{fetch(HUB,{method:'POST',body:JSON.stringify(op)}).catch(()=>{})}catch(e){}}
+function applyOp(raw){let op;try{op=JSON.parse(raw)}catch(e){return false}
+ if(op&&op.o==='put'&&op.t&&op.t.id&&op.t.shape&&SH[op.t.shape]&&op.t.date){const i=tasks.findIndex(x=>x.id===op.t.id);if(i>=0){if(JSON.stringify(tasks[i])===JSON.stringify(op.t))return false;tasks[i]=op.t}else tasks.push(op.t);return true}
+ if(op&&op.o==='del'&&op.id){const n=tasks.length;tasks=tasks.filter(x=>x.id!==op.id);return tasks.length!==n}
+ return false}
+function onMsg(m){if(!m||m.event!=='message'||seenMsg.has(m.id))return false;seenMsg.add(m.id);lastMsg=m.id;return applyOp(m.message)}
+function refresh(){clearTimeout(rrT);rrT=setTimeout(()=>{save();if(busy||$('#ov').classList.contains('on')){refresh();return}
+ try{const had=view&&view.querySelector('.empty');show(had?1:level,current&&current.date?current:{date:todayISO(),id:null},0)}catch(e){}},700)}
+async function pull(){try{const r=await fetch(HUB+'/json?poll=1&since='+lastMsg,{cache:'no-store'});if(!r.ok)return;const txt=await r.text();let ch=false;
+ for(const line of txt.split('\n')){if(!line.trim())continue;try{if(onMsg(JSON.parse(line)))ch=true}catch(e){}}if(ch)refresh()}catch(e){}}
+function live(){try{const es=new EventSource(HUB+'/sse?since='+lastMsg);es.onmessage=e=>{try{if(onMsg(JSON.parse(e.data)))refresh()}catch(x){}};
+ es.onerror=()=>{es.close();setTimeout(()=>{pull().then(live)},8000)}}catch(e){setInterval(pull,30000)}}
+pull().then(live);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)pull()});
 let startLv=1;try{const s=localStorage.getItem('form.level');if(s!==null)startLv=+s}catch(e){}
 try{show(tasks.length?startLv:1,{date:todayISO(),id:null},0);}catch(e){window.__killSplash();throw e;}
 try{if(new URLSearchParams(location.search).has('nosplash'))window.__killSplash();else splash();}catch(e){window.__killSplash();console.error(e);}
